@@ -3,10 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E3C703525491DB90033354E /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C703425491DB90033354E /* FeedTableViewController.swift */; };
+		2E3C703A254BBCCD0033354E /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */; };
+		2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C703E254BC7B30033354E /* ImageLoader.swift */; };
 		2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A2253FB860009EF4C4 /* AppDelegate.swift */; };
 		2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */; };
 		2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A6253FB860009EF4C4 /* ViewController.swift */; };
@@ -15,6 +18,9 @@
 		2E6546AF253FB869009EF4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6546AD253FB869009EF4C4 /* LaunchScreen.storyboard */; };
 		2E6546BA253FB869009EF4C4 /* cherriosTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546B9253FB869009EF4C4 /* cherriosTests.swift */; };
 		2E6546C5253FB869009EF4C4 /* cherriosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546C4253FB869009EF4C4 /* cherriosUITests.swift */; };
+		2E6546D7253FCD0E009EF4C4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546D6253FCD0E009EF4C4 /* Alamofire */; };
+		2E6546DD253FCF70009EF4C4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546DC253FCF70009EF4C4 /* SwiftyJSON */; };
+		2E8825EC254137F50070CB83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8825EB254137F50070CB83 /* LoginController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +41,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E3C703425491DB90033354E /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
+		2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		2E3C703E254BC7B30033354E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		2E65469F253FB860009EF4C4 /* cherrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cherrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546A2253FB860009EF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +58,7 @@
 		2E6546C0253FB869009EF4C4 /* cherriosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cherriosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546C4253FB869009EF4C4 /* cherriosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cherriosUITests.swift; sourceTree = "<group>"; };
 		2E6546C6253FB869009EF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E8825EB254137F50070CB83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E6546DD253FCF70009EF4C4 /* SwiftyJSON in Frameworks */,
+				2E6546D7253FCD0E009EF4C4 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,9 +115,13 @@
 				2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */,
 				2E6546A6253FB860009EF4C4 /* ViewController.swift */,
 				2E6546A8253FB860009EF4C4 /* Main.storyboard */,
+				2E3C703425491DB90033354E /* FeedTableViewController.swift */,
+				2E3C703E254BC7B30033354E /* ImageLoader.swift */,
+				2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */,
 				2E6546AB253FB868009EF4C4 /* Assets.xcassets */,
 				2E6546AD253FB869009EF4C4 /* LaunchScreen.storyboard */,
 				2E6546B0253FB869009EF4C4 /* Info.plist */,
+				2E8825EB254137F50070CB83 /* LoginController.swift */,
 			);
 			path = cherrios;
 			sourceTree = "<group>";
@@ -144,6 +160,10 @@
 			dependencies = (
 			);
 			name = cherrios;
+			packageProductDependencies = (
+				2E6546D6253FCD0E009EF4C4 /* Alamofire */,
+				2E6546DC253FCF70009EF4C4 /* SwiftyJSON */,
+			);
 			productName = cherrios;
 			productReference = 2E65469F253FB860009EF4C4 /* cherrios.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +235,10 @@
 				Base,
 			);
 			mainGroup = 2E654696253FB860009EF4C4;
+			packageReferences = (
+				2E6546D5253FCD0E009EF4C4 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				2E6546DB253FCF70009EF4C4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 2E6546A0253FB860009EF4C4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -258,7 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */,
 				2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */,
+				2E3C703A254BBCCD0033354E /* FeedTableViewCell.swift in Sources */,
+				2E8825EC254137F50070CB83 /* LoginController.swift in Sources */,
+				2E3C703525491DB90033354E /* FeedTableViewController.swift in Sources */,
 				2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */,
 				2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */,
 			);
@@ -587,6 +615,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2E6546D5253FCD0E009EF4C4 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.3.0;
+			};
+		};
+		2E6546DB253FCF70009EF4C4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2E6546D6253FCD0E009EF4C4 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E6546D5253FCD0E009EF4C4 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		2E6546DC253FCF70009EF4C4 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2E6546DB253FCF70009EF4C4 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2E654697253FB860009EF4C4 /* Project object */;
 }
