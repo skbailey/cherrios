@@ -26,9 +26,18 @@ class FeedTableViewController: UITableViewController {
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        let latestURL = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/fish.jpeg")
-        profiles.append(latestURL!)
-        profiles.append(latestURL!)
+        let profile1 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-dude.png")
+        let profile2 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-guy.jpg")
+        let profile3 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-older-man.png")
+        let profile4 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-woman.jpg")
+        profiles.append(profile1!)
+        profiles.append(profile2!)
+        profiles.append(profile3!)
+        profiles.append(profile4!)
+        profiles.append(profile1!)
+        profiles.append(profile2!)
+        profiles.append(profile3!)
+        profiles.append(profile4!)
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem

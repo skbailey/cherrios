@@ -325,23 +325,24 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="feedCellIdentifier" id="sIm-Fv-KYT" customClass="FeedTableViewCell" customModule="cherrios" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="28" width="414" height="414.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sIm-Fv-KYT" id="xmw-eQ-Mzl">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="414.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ws-2Q-gyy">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="414" placeholderIntrinsicHeight="43.5" translatesAutoresizingMaskIntoConstraints="NO" id="9ws-2Q-gyy">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="414.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" secondItem="9ws-2Q-gyy" secondAttribute="height" multiplier="434:391" id="gBM-xm-DPZ"/>
+                                                <constraint firstAttribute="width" secondItem="9ws-2Q-gyy" secondAttribute="height" multiplier="1:1" id="gBM-xm-DPZ"/>
                                             </constraints>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="9ws-2Q-gyy" secondAttribute="bottom" id="4hG-sk-URN"/>
                                         <constraint firstItem="9ws-2Q-gyy" firstAttribute="top" secondItem="xmw-eQ-Mzl" secondAttribute="top" id="Dov-A7-aUc"/>
-                                        <constraint firstItem="9ws-2Q-gyy" firstAttribute="centerX" secondItem="xmw-eQ-Mzl" secondAttribute="centerX" id="Qvl-sQ-Egr"/>
+                                        <constraint firstAttribute="trailing" secondItem="9ws-2Q-gyy" secondAttribute="trailing" id="Sye-EO-bfc"/>
+                                        <constraint firstItem="9ws-2Q-gyy" firstAttribute="leading" secondItem="xmw-eQ-Mzl" secondAttribute="leading" id="hhG-GL-u08"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
