@@ -11,6 +11,7 @@
 		2E3C703A254BBCCD0033354E /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */; };
 		2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C703E254BC7B30033354E /* ImageLoader.swift */; };
 		2E3C7045254D25D40033354E /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7044254D25D40033354E /* ProfileTableViewController.swift */; };
+		2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */; };
 		2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A2253FB860009EF4C4 /* AppDelegate.swift */; };
 		2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */; };
 		2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A6253FB860009EF4C4 /* ViewController.swift */; };
@@ -46,6 +47,7 @@
 		2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		2E3C703E254BC7B30033354E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		2E3C7044254D25D40033354E /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		2E65469F253FB860009EF4C4 /* cherrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cherrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546A2253FB860009EF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */,
 				2E6546A6253FB860009EF4C4 /* ViewController.swift */,
 				2E6546A8253FB860009EF4C4 /* Main.storyboard */,
+				2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */,
 				2E3C7044254D25D40033354E /* ProfileTableViewController.swift */,
 				2E3C703425491DB90033354E /* FeedTableViewController.swift */,
 				2E3C703E254BC7B30033354E /* ImageLoader.swift */,
@@ -286,6 +289,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */,
+				2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */,
 				2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */,
 				2E3C703A254BBCCD0033354E /* FeedTableViewCell.swift in Sources */,
 				2E8825EC254137F50070CB83 /* LoginController.swift in Sources */,

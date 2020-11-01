@@ -339,10 +339,71 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="eIN-3F-pop"/>
+                    <connections>
+                        <segue destination="jc2-lJ-5i2" kind="presentation" identifier="showSettings" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="5Ci-DH-6jZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D2T-HQ-o9a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1154" y="1543"/>
+        </scene>
+        <!--Profile Settings View Controller-->
+        <scene sceneID="883-18-Dfz">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" id="jc2-lJ-5i2" customClass="ProfileSettingsViewController" customModule="cherrios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NGg-HS-h0i">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rb-7t-rJE">
+                                <rect key="frame" x="0.0" y="642" width="414" height="220"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rte-Cc-IMg">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <items>
+                                            <navigationItem title="Title" id="ain-T4-ysM"/>
+                                        </items>
+                                    </navigationBar>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JK-Ab-WVc">
+                                        <rect key="frame" x="0.0" y="58" width="414" height="162"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="162" id="1ye-E4-eEn"/>
+                                            <constraint firstAttribute="height" constant="162" id="ggk-fp-lSZ"/>
+                                        </constraints>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="7JK-Ab-WVc" secondAttribute="bottom" id="Afc-26-XAo"/>
+                                    <constraint firstItem="7JK-Ab-WVc" firstAttribute="leading" secondItem="8rb-7t-rJE" secondAttribute="leading" id="Cml-Mg-Cxk"/>
+                                    <constraint firstAttribute="trailing" secondItem="7JK-Ab-WVc" secondAttribute="trailing" id="FW5-LQ-jai"/>
+                                    <constraint firstItem="rte-Cc-IMg" firstAttribute="top" secondItem="8rb-7t-rJE" secondAttribute="top" id="SBK-W3-x1M"/>
+                                    <constraint firstAttribute="height" constant="220" id="YmO-v6-Jv8"/>
+                                    <constraint firstItem="rte-Cc-IMg" firstAttribute="leading" secondItem="8rb-7t-rJE" secondAttribute="leading" id="diI-Cv-YV4"/>
+                                    <constraint firstAttribute="trailing" secondItem="7JK-Ab-WVc" secondAttribute="trailing" id="gkr-UY-7U7"/>
+                                    <constraint firstAttribute="trailing" secondItem="rte-Cc-IMg" secondAttribute="trailing" id="waO-O7-2Id"/>
+                                    <constraint firstAttribute="bottom" secondItem="7JK-Ab-WVc" secondAttribute="bottom" id="wxv-Lg-JJh"/>
+                                    <constraint firstItem="7JK-Ab-WVc" firstAttribute="leading" secondItem="8rb-7t-rJE" secondAttribute="leading" id="zMG-BS-XIv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="KQU-0j-Jb4"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.3065603595890411" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KQU-0j-Jb4" firstAttribute="bottom" secondItem="8rb-7t-rJE" secondAttribute="bottom" id="Lu9-K1-Qsg"/>
+                            <constraint firstItem="KQU-0j-Jb4" firstAttribute="trailing" secondItem="8rb-7t-rJE" secondAttribute="trailing" id="NWc-yi-8nW"/>
+                            <constraint firstItem="8rb-7t-rJE" firstAttribute="leading" secondItem="KQU-0j-Jb4" secondAttribute="leading" id="qwy-DJ-U1c"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="VcE-fR-ixP"/>
+                    <connections>
+                        <outlet property="navigationBar" destination="rte-Cc-IMg" id="iC6-8C-bGD"/>
+                        <outlet property="picker" destination="7JK-Ab-WVc" id="moA-ta-r8v"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hke-ku-rAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018.840579710145" y="1542.8571428571429"/>
         </scene>
         <!--Feed Table View Controller-->
         <scene sceneID="4df-2e-aos">

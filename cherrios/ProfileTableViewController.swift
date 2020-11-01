@@ -12,7 +12,7 @@ struct Stat {
 
 import UIKit
 
-class ProfileTableViewController: UITableViewController {
+class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate {
     
     var stats: [Stat] = []
 
@@ -23,7 +23,7 @@ class ProfileTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         stats = [
-            Stat(name: "age", value: "27"),
+            Stat(name: "age", value: "18 - 90"),
             Stat(name: "weight", value: "134 lb"),
             Stat(name: "ethnicity", value: "asian"),
             Stat(name: "gender", value: "male"),
@@ -55,50 +55,27 @@ class ProfileTableViewController: UITableViewController {
 
         return cell
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showSettings", sender: nil)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "showSettings" {
+            let destination = segue.destination as! ProfileSettingsViewController
+            destination.delegate = self
+            let indexPath = tableView.indexPathForSelectedRow
+            let stat = stats[indexPath!.row]
+            destination.title = stat.name
+        }
     }
-    */
-
+    
+    // MARK: ProfileSettingsDelegate method
+    
+    func didChooseSetting(_ value: String) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let cell = tableView.cellForRow(at: indexPath!)
+        cell?.detailTextLabel?.text = value
+    }
+    
 }
