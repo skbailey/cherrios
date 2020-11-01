@@ -23,11 +23,11 @@ class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate
         // self.clearsSelectionOnViewWillAppear = false
         
         stats = [
-            Stat(name: "age", value: "18 - 90"),
+            Stat(name: "age", value: "27"),
             Stat(name: "weight", value: "134 lb"),
             Stat(name: "ethnicity", value: "asian"),
             Stat(name: "gender", value: "male"),
-            Stat(name: "height", value: "5' 9")
+            Stat(name: "height", value: "5' 9\"")
         ]
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -72,10 +72,12 @@ class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate
     
     // MARK: ProfileSettingsDelegate method
     
-    func didChooseSetting(_ value: String) {
+    func didChooseValue(_ value: Any?) {
         let indexPath = tableView.indexPathForSelectedRow
         let cell = tableView.cellForRow(at: indexPath!)
-        cell?.detailTextLabel?.text = value
+        
+        if let value = value as? Int {
+            cell?.detailTextLabel?.text = String(value)
+        }
     }
-    
 }

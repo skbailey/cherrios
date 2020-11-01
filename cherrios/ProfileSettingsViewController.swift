@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProfileSettingsDelegate {
-    func didChooseSetting(_: String) -> Void
+    func didChooseValue(_: Any?) -> Void
 }
 
 class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -38,18 +38,15 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     }
     
     @objc func done() {
-        let minAge = ageRange[picker.selectedRow(inComponent: 0)]
-        let maxAge = ageRange[picker.selectedRow(inComponent: 1)]
-        print("Age range", minAge, maxAge)
-        let selection = String(format: "%d - %d", minAge, maxAge)
-        delegate?.didChooseSetting(selection)
+        let age = ageRange[picker.selectedRow(inComponent: 0)]
+        delegate?.didChooseValue(age)
         dismiss(animated: false, completion: nil)
     }
     
     // MARK: UIPickerViewDataSource methods
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        2
+        1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
