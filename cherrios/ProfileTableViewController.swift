@@ -24,10 +24,10 @@ class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate
         
         stats = [
             Stat(name: "age", value: "27"),
+            Stat(name: "height", value: "5' 9\""),
             Stat(name: "weight", value: "134 lb"),
-            Stat(name: "ethnicity", value: "asian"),
             Stat(name: "gender", value: "male"),
-            Stat(name: "height", value: "5' 9\"")
+            Stat(name: "ethnicity", value: "asian")
         ]
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -62,22 +62,26 @@ class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSettings" {
-            let destination = segue.destination as! ProfileSettingsViewController
-            destination.delegate = self
             let indexPath = tableView.indexPathForSelectedRow
             let stat = stats[indexPath!.row]
+            let destination = segue.destination as! ProfileSettingsViewController
             destination.title = stat.name
+            destination.delegate = self
         }
     }
     
     // MARK: ProfileSettingsDelegate method
     
-    func didChooseValue(_ value: Any?) {
+    func didChooseValue(_ option: Any?) {
         let indexPath = tableView.indexPathForSelectedRow
         let cell = tableView.cellForRow(at: indexPath!)
         
-        if let value = value as? Int {
-            cell?.detailTextLabel?.text = String(value)
+        if let option = option as? Int {
+            cell?.detailTextLabel?.text = String(option)
+        }
+        
+        if let option = option as? Ethnicity {
+            cell?.detailTextLabel?.text = option.value
         }
     }
 }

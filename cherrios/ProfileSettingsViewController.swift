@@ -7,17 +7,33 @@
 
 import UIKit
 
+struct Ethnicity {
+    let key: String
+    let value: String
+}
+
 protocol ProfileSettingsDelegate {
     func didChooseValue(_: Any?) -> Void
 }
+
+let ageRange = Array(18...90)
+let ethnicityRange = [
+    Ethnicity(key: "asian", value: "Asian"),
+    Ethnicity(key: "black", value: "Black"),
+    Ethnicity(key: "latino", value: "Hispanic/Latino"),
+    Ethnicity(key: "white", value: "White"),
+    Ethnicity(key: "middle_eastern", value: "Middle Eastern"),
+    Ethnicity(key: "multi_racial", value: "Multi-Racial"),
+    Ethnicity(key: "native_american", value: "Native American"),
+]
 
 class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var picker: UIPickerView!
     
-    let ageRange = Array(18...90)
-    var delegate: ProfileSettingsDelegate? = nil
+    var delegate: ProfileSettingsDelegate?
+    var profileSettingOptions: [Any] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +47,19 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
         
         picker.dataSource = self
         picker.delegate = self
+        
+        setOptions()
+    }
+    
+    func setOptions() {
+        switch title {
+        case "age":
+            profileSettingOptions = ageRange
+        case "ethnicity":
+            profileSettingOptions = ethnicityRange
+        default:
+            print("unexpected profile type")
+        }
     }
     
     @objc func cancel() {
@@ -38,8 +67,8 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     }
     
     @objc func done() {
-        let age = ageRange[picker.selectedRow(inComponent: 0)]
-        delegate?.didChooseValue(age)
+        let option = profileSettingOptions[picker.selectedRow(inComponent: 0)]
+        delegate?.didChooseValue(option)
         dismiss(animated: false, completion: nil)
     }
     
@@ -50,13 +79,21 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        ageRange.count
+        profileSettingOptions.count
     }
     
     // MARK: UIPickerViewDelegate methods
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        let age = ageRange[row]
-        return String(age)
+        let option = profileSettingOptions[row]
+        if let option = option as? Int {
+            return String(option)
+        }
+        
+        if let option = option as? Ethnicity {
+            return option.value
+        }
+        
+        return nil
     }
 }
