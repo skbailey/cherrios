@@ -80,8 +80,8 @@ class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate
             cell?.detailTextLabel?.text = String(option)
         }
         
-        if let option = option as? Ethnicity {
-            cell?.detailTextLabel?.text = option.value
+        if let option = option as? ProfileSetting {
+            cell?.detailTextLabel?.text = option.formatted
         }
     }
 }

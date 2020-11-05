@@ -7,9 +7,51 @@
 
 import UIKit
 
-struct Ethnicity {
-    let key: String
-    let value: String
+enum Ethnicity: String, CaseIterable, ProfileSetting {
+    case asian = "asian"
+    case black = "black"
+    case latino = "latino"
+    case white = "white"
+    case middleEastern = "middle_eastern"
+    case multiRacial = "multi_racial"
+    case nativeAmerican = "native_american"
+    
+    var formatted: String {
+        switch self {
+        case .asian:
+            return "Asian"
+        case .black:
+            return "Black"
+        case .latino:
+            return "Hispanic/Latino"
+        case .white:
+            return "White"
+        case .middleEastern:
+            return "Middle Eastern"
+        case .multiRacial:
+            return "Multi-Racial"
+        case .nativeAmerican:
+            return "Native American"
+        }
+    }
+}
+
+enum Gender: String, CaseIterable, ProfileSetting {
+    case male
+    case female
+    
+    var formatted: String {
+        switch self {
+        case .male:
+            return "Male"
+        case .female:
+            return "Female"
+        }
+    }
+}
+
+protocol ProfileSetting {
+    var formatted: String { get }
 }
 
 protocol ProfileSettingsDelegate {
@@ -17,15 +59,8 @@ protocol ProfileSettingsDelegate {
 }
 
 let ageRange = Array(18...90)
-let ethnicityRange = [
-    Ethnicity(key: "asian", value: "Asian"),
-    Ethnicity(key: "black", value: "Black"),
-    Ethnicity(key: "latino", value: "Hispanic/Latino"),
-    Ethnicity(key: "white", value: "White"),
-    Ethnicity(key: "middle_eastern", value: "Middle Eastern"),
-    Ethnicity(key: "multi_racial", value: "Multi-Racial"),
-    Ethnicity(key: "native_american", value: "Native American"),
-]
+let genderRange = Gender.allCases
+let ethnicityRange = Ethnicity.allCases
 
 class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -57,6 +92,8 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
             profileSettingOptions = ageRange
         case "ethnicity":
             profileSettingOptions = ethnicityRange
+        case "gender":
+            profileSettingOptions = genderRange
         default:
             print("unexpected profile type")
         }
@@ -90,8 +127,8 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
             return String(option)
         }
         
-        if let option = option as? Ethnicity {
-            return option.value
+        if let option = option as? ProfileSetting {
+            return option.formatted
         }
         
         return nil
