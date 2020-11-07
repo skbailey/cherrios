@@ -25,7 +25,7 @@ class ProfileTableViewController: UITableViewController, ProfileSettingsDelegate
         stats = [
             Stat(name: "age", value: "27"),
             Stat(name: "height", value: "5' 9\""),
-            Stat(name: "weight", value: "134 lb"),
+            Stat(name: "weight", value: "134 lbs"),
             Stat(name: "gender", value: "male"),
             Stat(name: "ethnicity", value: "asian")
         ]

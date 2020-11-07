@@ -50,6 +50,42 @@ enum Gender: String, CaseIterable, ProfileSetting {
     }
 }
 
+struct Weight: ProfileSetting {
+    private var _imperial: Float
+    private var _metric: Float
+    
+    var imperial: Float {
+        get {
+            return _imperial
+        }
+        
+        set(newValue) {
+            _imperial = newValue
+            _metric = newValue * 0.453592
+        }
+    }
+    
+    var metric: Float {
+        get {
+            return _metric
+        }
+        
+        set(newValue) {
+            _imperial = newValue * 2.20462
+            _metric = newValue
+        }
+    }
+    
+    var formatted: String {
+        return "\(String(_imperial)) lbs"
+    }
+    
+    init(imperial: Float) {
+        _imperial = imperial
+        _metric = imperial * 2.20462
+    }
+}
+
 protocol ProfileSetting {
     var formatted: String { get }
 }
@@ -59,6 +95,7 @@ protocol ProfileSettingsDelegate {
 }
 
 let ageRange = Array(18...90)
+let weightInLBS = Array(100...400).map { Weight(imperial: Float($0)) }
 let genderRange = Gender.allCases
 let ethnicityRange = Ethnicity.allCases
 
@@ -90,6 +127,8 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
         switch title {
         case "age":
             profileSettingOptions = ageRange
+        case "weight":
+            profileSettingOptions = weightInLBS
         case "ethnicity":
             profileSettingOptions = ethnicityRange
         case "gender":
@@ -104,7 +143,8 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     }
     
     @objc func done() {
-        let option = profileSettingOptions[picker.selectedRow(inComponent: 0)]
+        let row = picker.selectedRow(inComponent: 0)
+        let option = profileSettingOptions[row]
         delegate?.didChooseValue(option)
         dismiss(animated: false, completion: nil)
     }
