@@ -86,6 +86,23 @@ struct Weight: ProfileSetting {
     }
 }
 
+struct Height: ProfileSetting {
+    private var _imperial: Int
+    private var _metric: Int
+    
+    var formatted: String {
+        let feet = _imperial / 12
+        let inches = _imperial % 12
+        return "\(String(feet))' \(inches)\""
+    }
+    
+    init(imperial: Int) {
+        _imperial = imperial
+        let temp = Float(imperial) * 2.20462
+        _metric = Int(temp)
+    }
+}
+
 protocol ProfileSetting {
     var formatted: String { get }
 }
@@ -95,6 +112,7 @@ protocol ProfileSettingsDelegate {
 }
 
 let ageRange = Array(18...90)
+let heightRange = Array(48...84).map { Height(imperial: $0) }
 let weightInLBS = Array(100...400).map { Weight(imperial: Float($0)) }
 let genderRange = Gender.allCases
 let ethnicityRange = Ethnicity.allCases
@@ -129,6 +147,8 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
             profileSettingOptions = ageRange
         case "weight":
             profileSettingOptions = weightInLBS
+        case "height":
+            profileSettingOptions = heightRange
         case "ethnicity":
             profileSettingOptions = ethnicityRange
         case "gender":
