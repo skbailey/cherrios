@@ -233,29 +233,47 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="272.5"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Pg-lU-oi0">
-                                                        <rect key="frame" x="319" y="118" width="50" height="36"/>
+                                                        <rect key="frame" x="319" y="68" width="50" height="36"/>
                                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                                         <state key="normal" title="Login"/>
                                                         <connections>
                                                             <action selector="loginUser:" destination="EX6-Bw-VaD" eventType="touchUpInside" id="WoI-5h-uxc"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EWY-Xg-fzh">
-                                                        <rect key="frame" x="217" y="118" width="72" height="36"/>
-                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
-                                                        <state key="normal" title="Sign Up">
-                                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </state>
-                                                        <connections>
-                                                            <segue destination="BYZ-38-t0r" kind="show" id="AxH-JU-8Yy"/>
-                                                        </connections>
-                                                    </button>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Du-ko-Z6A">
+                                                        <rect key="frame" x="77" y="200.5" width="260" height="72"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create an account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZ0-Xu-8tG">
+                                                                <rect key="frame" x="20" y="26" width="140" height="20"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mqw-d2-RLy">
+                                                                <rect key="frame" x="170" y="20" width="59" height="32"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                                                <state key="normal" title="Sign up"/>
+                                                                <connections>
+                                                                    <segue destination="BYZ-38-t0r" kind="show" id="tom-N6-zWs"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="260" id="5D1-ln-Ydf"/>
+                                                            <constraint firstItem="iZ0-Xu-8tG" firstAttribute="centerY" secondItem="2Du-ko-Z6A" secondAttribute="centerY" id="BM5-Pl-jlT"/>
+                                                            <constraint firstAttribute="height" constant="72" id="Eol-7h-ypL"/>
+                                                            <constraint firstItem="Mqw-d2-RLy" firstAttribute="leading" secondItem="iZ0-Xu-8tG" secondAttribute="trailing" constant="10" id="YtA-8K-P4e"/>
+                                                            <constraint firstItem="iZ0-Xu-8tG" firstAttribute="leading" secondItem="2Du-ko-Z6A" secondAttribute="leading" constant="20" symbolic="YES" id="dm4-kI-8tP"/>
+                                                            <constraint firstItem="Mqw-d2-RLy" firstAttribute="centerY" secondItem="2Du-ko-Z6A" secondAttribute="centerY" id="xuf-8e-qom"/>
+                                                        </constraints>
+                                                    </view>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="7Pg-lU-oi0" firstAttribute="firstBaseline" secondItem="EWY-Xg-fzh" secondAttribute="firstBaseline" id="59c-On-kaF"/>
-                                                    <constraint firstItem="EWY-Xg-fzh" firstAttribute="trailing" secondItem="7Pg-lU-oi0" secondAttribute="leading" constant="-30" id="9jl-bb-x9b"/>
-                                                    <constraint firstItem="7Pg-lU-oi0" firstAttribute="centerY" secondItem="hXH-5E-0mw" secondAttribute="centerY" id="d5z-s9-RwI"/>
+                                                    <constraint firstItem="2Du-ko-Z6A" firstAttribute="centerX" secondItem="hXH-5E-0mw" secondAttribute="centerX" id="ITq-QB-aZH"/>
+                                                    <constraint firstItem="7Pg-lU-oi0" firstAttribute="centerY" secondItem="hXH-5E-0mw" secondAttribute="centerY" constant="-50" id="d5z-s9-RwI"/>
+                                                    <constraint firstAttribute="bottom" secondItem="2Du-ko-Z6A" secondAttribute="bottom" id="fMF-fQ-MpI"/>
                                                     <constraint firstAttribute="trailing" secondItem="7Pg-lU-oi0" secondAttribute="trailing" constant="45" id="taf-d5-S78"/>
                                                 </constraints>
                                             </view>
@@ -282,7 +300,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e3u-XK-VDI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="712" y="-88"/>
+            <point key="canvasLocation" x="711.59420289855075" y="-88.392857142857139"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vM8-sh-TGg">
