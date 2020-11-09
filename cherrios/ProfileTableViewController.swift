@@ -24,11 +24,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         // self.clearsSelectionOnViewWillAppear = false
         
         stats = [
-            Stat(name: "age", value: "27"),
-            Stat(name: "height", value: "5' 9\""),
-            Stat(name: "weight", value: "134 lbs"),
-            Stat(name: "gender", value: "male"),
-            Stat(name: "ethnicity", value: "asian")
+            Stat(name: "age", value: "Please select"),
+            Stat(name: "height", value: "Please select"),
+            Stat(name: "weight", value: "Please select"),
+            Stat(name: "gender", value: "Please select"),
+            Stat(name: "ethnicity", value: "Please select")
         ]
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.

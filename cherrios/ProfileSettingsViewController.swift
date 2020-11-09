@@ -51,27 +51,29 @@ enum Gender: String, CaseIterable, ProfileSetting {
 }
 
 struct Weight: ProfileSetting {
-    private var _imperial: Float
-    private var _metric: Float
+    private var _imperial: Int = 0
+    private var _metric: Int = 0
     
-    var imperial: Float {
+    var imperial: Int {
         get {
             return _imperial
         }
         
         set(newValue) {
+            let temp = Float(newValue) * 0.453592
+            _metric = Int(temp)
             _imperial = newValue
-            _metric = newValue * 0.453592
         }
     }
     
-    var metric: Float {
+    var metric: Int {
         get {
             return _metric
         }
         
         set(newValue) {
-            _imperial = newValue * 2.20462
+            let temp = Float(newValue) * 2.20462
+            _imperial = Int(temp)
             _metric = newValue
         }
     }
@@ -80,9 +82,8 @@ struct Weight: ProfileSetting {
         return "\(String(_imperial)) lbs"
     }
     
-    init(imperial: Float) {
-        _imperial = imperial
-        _metric = imperial * 2.20462
+    init(imperial: Int) {
+        self.imperial = imperial
     }
 }
 
@@ -113,7 +114,7 @@ protocol ProfileSettingsDelegate {
 
 let ageRange = Array(18...90)
 let heightRange = Array(48...84).map { Height(imperial: $0) }
-let weightInLBS = Array(100...400).map { Weight(imperial: Float($0)) }
+let weightInLBS = Array(100...400).map { Weight(imperial: $0) }
 let genderRange = Gender.allCases
 let ethnicityRange = Ethnicity.allCases
 
