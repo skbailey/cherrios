@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import SwiftyJSON
 import UIKit
 
 class LoginController: UIViewController {
@@ -14,7 +15,7 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -35,31 +36,39 @@ class LoginController: UIViewController {
         
         let loginParams = ["username": userEmail, "password": userPassword]
         AF.request("http://localhost:3333/api/auth/login",
-           method: .post,
-           parameters: loginParams,
-           encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
+                   method: .post,
+                   parameters: loginParams,
+                   encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-            .response { [weak self] response in
+            .responseJSON { [weak self] response in
                 debugPrint(response)
                 switch response.result {
-                case .success:
+                case let .success(value):
                     print("Login Successful")
+                    let json = JSON(value)
+                    if let token = json["token"].string {
+                        print("Token", token)
+                        AF.request("http://localhost:3333/api/profiles",
+                                   headers: ["Authorization": "Bearer \(token)"])
+                            .validate(statusCode: 200..<300)
+                            .validate(contentType: ["text/plain"])
+                            .responseString { response in
+                                debugPrint(response)
+                                
+                                switch response.result {
+                                case .success:
+                                    print("Successfully fetched profiles/used JWT")
+                                case let .failure(error):
+                                    print(error)
+                                }
+                            }
+                    }
+                    
                     self?.performSegue(withIdentifier: "LoginUser", sender: nil)
                 case let .failure(error):
                     print(error)
                 }
-        }
+            }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
