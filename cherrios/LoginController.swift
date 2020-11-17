@@ -41,31 +41,32 @@ class LoginController: UIViewController {
                    encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
-            .responseJSON { [weak self] response in
+            .responseJSON { response in
                 debugPrint(response)
                 switch response.result {
                 case let .success(value):
                     print("Login Successful")
                     let json = JSON(value)
                     if let token = json["token"].string {
+                        // TODO: Save this token for later requests
                         print("Token", token)
+                        authToken = token
                         AF.request("http://localhost:3333/api/profiles",
                                    headers: ["Authorization": "Bearer \(token)"])
                             .validate(statusCode: 200..<300)
                             .validate(contentType: ["text/plain"])
-                            .responseString { response in
+                            .responseString { [weak self] response in
                                 debugPrint(response)
                                 
                                 switch response.result {
                                 case .success:
-                                    print("Successfully fetched profiles/used JWT")
+                                    self?.performSegue(withIdentifier: "LoginUser", sender: nil)
                                 case let .failure(error):
                                     print(error)
                                 }
                             }
                     }
                     
-                    self?.performSegue(withIdentifier: "LoginUser", sender: nil)
                 case let .failure(error):
                     print(error)
                 }

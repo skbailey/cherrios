@@ -5,14 +5,22 @@
 //  Created by Sherard Bailey on 10/31/20.
 //
 
+import UIKit
+import Alamofire
+
+
 struct Stat {
     var name: String
     var value: String
+    var raw: Any?
 }
 
-import UIKit
+struct Settings: Encodable {
+    let weight: Int?
+}
 
 class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileSettingsDelegate {
+    
     @IBOutlet weak var tableView: UITableView!
     
     var stats: [Stat] = []
@@ -73,16 +81,49 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: ProfileSettingsDelegate method
     
-    func didChooseValue(_ option: Any?) {
+    func didChooseValue(_ option: ProfileSetting) {
         let indexPath = tableView.indexPathForSelectedRow
-        let cell = tableView.cellForRow(at: indexPath!)
         
-        if let option = option as? Int {
-            cell?.detailTextLabel?.text = String(option)
+        let row = indexPath!.row
+        let cell = tableView.cellForRow(at: indexPath!)
+        cell?.detailTextLabel?.text = option.formatted
+        
+        var stat = stats[row]
+        stat.value = option.formatted
+        stat.raw = option.raw
+        
+        stats[row] = stat
+        updateProfile()
+    }
+    
+    func updateProfile() -> Void {
+        var selectedValues: [String:Any] = [:]
+        for stat in stats {
+            if stat.raw == nil {
+                continue
+            }
+            
+            selectedValues[stat.name] = stat.raw
         }
         
-        if let option = option as? ProfileSetting {
-            cell?.detailTextLabel?.text = option.formatted
+        let params = Settings(weight: selectedValues["weight"] as? Int)
+        
+        AF.request("http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5",
+                   
+           method: .post,
+           parameters: params,
+           encoder: URLEncodedFormParameterEncoder(destination: .httpBody),
+           headers: ["Authorization": "Bearer \(authToken)"])
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                debugPrint(response)
+                switch response.result {
+                case .success:
+                    print("Settings saved")
+                case let .failure(error):
+                    print(error)
+                }
         }
     }
 }
