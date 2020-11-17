@@ -50,98 +50,10 @@ import UIKit
 //    }
 //}
 
-struct Weight: ProfileSetting {
-    private static let metricToImperialCoeff: Float = 2.20462
-    private static let imperialToMetricCoeff: Float = 0.453592
-    private static let range: [Int] = Array(100...400)
-    private static let formattedRange: [String] = range.map { String($0) }
-    
-    private var _imperial: Int = 0
-    private var _metric: Int = 0
-    
-    var current: Int? {
-        didSet {
-            imperial = current!
-        }
-    }
-    
-    var imperial: Int {
-        get {
-            return _imperial
-        }
-        
-        set(newValue) {
-            let temp = Float(newValue) * Weight.imperialToMetricCoeff
-            _metric = Int(temp)
-            _imperial = newValue
-        }
-    }
-    
-    var metric: Int {
-        get {
-            return _metric
-        }
-        
-        set(newValue) {
-            let temp = Float(newValue) * Weight.metricToImperialCoeff
-            _imperial = Int(temp)
-            _metric = newValue
-        }
-    }
-    
-    var formatted: String {
-        return "\(String(_imperial)) lbs"
-    }
-    
-    var raw: Any? {
-        return _imperial
-    }
-    
-    init(imperial: Int) {
-        self.imperial = imperial
-    }
-    
-    func rangeOfValues() -> [String] {
-        return Weight.formattedRange
-    }
-    
-    func rangeOfRawValues() -> [Any] {
-        return Weight.range
-    }
-}
-
-//struct Height {
-//    private var _imperial: Int
-//    private var _metric: Int
-//
-//    var formatted: String {
-//        let feet = _imperial / 12
-//        let inches = _imperial % 12
-//        return "\(String(feet))' \(inches)\""
-//    }
-//
-//    init(imperial: Int) {
-//        _imperial = imperial
-//        let temp = Float(imperial) * 2.20462
-//        _metric = Int(temp)
-//    }
-//}
-
-protocol ProfileSetting {
-    var formatted: String { get }
-    var raw: Any? { get }
-    var current: Int? { get set }
-    
-    func rangeOfValues() -> [String]
-    func rangeOfRawValues() -> [Any]
-}
-
 protocol ProfileSettingsDelegate {
     func didChooseValue(_: ProfileSetting) -> Void
 }
 
-//let ageRange = Array(18...90)
-//let heightRange = Array(48...84).map { Height(imperial: $0) }
 //let genderRange = Gender.allCases
 //let ethnicityRange = Ethnicity.allCases
 
@@ -150,9 +62,9 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var picker: UIPickerView!
     var settingOptions: [String:ProfileSetting] = [
-//        "age":nil,
+        "age":Age(),
         "weight": Weight(imperial: 0),
-//        "height":nil,
+        "height": Height(imperial: 0),
 //        "gender":nil,
 //        "ethnicity":nil
     ]

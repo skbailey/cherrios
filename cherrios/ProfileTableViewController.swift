@@ -16,6 +16,8 @@ struct Stat {
 }
 
 struct Settings: Encodable {
+    let age: Int?
+    let height: Int?
     let weight: Int?
 }
 
@@ -106,7 +108,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             selectedValues[stat.name] = stat.raw
         }
         
-        let params = Settings(weight: selectedValues["weight"] as? Int)
+        let params = Settings(
+            age: selectedValues["age"] as? Int,
+            height: selectedValues["height"] as? Int,
+            weight: selectedValues["weight"] as? Int
+        )
         
         AF.request("http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5",
                    
