@@ -103,12 +103,14 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         let ethnicityType = selectedValues["ethnicity"] as? EthnicityType
+        let genderType = selectedValues["gender"] as? GenderType
         
         let params = Settings(
             age: selectedValues["age"] as? Int,
             height: selectedValues["height"] as? Int,
             weight: selectedValues["weight"] as? Int,
-            ethnicity: ethnicityType?.rawValue
+            ethnicity: ethnicityType?.rawValue,
+            gender: genderType?.rawValue
         )
         
         AF.request("http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5",

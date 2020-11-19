@@ -7,26 +7,9 @@
 
 import UIKit
 
-//enum Gender: String, CaseIterable {
-//    case male
-//    case female
-//
-//    var formatted: String {
-//        switch self {
-//        case .male:
-//            return "Male"
-//        case .female:
-//            return "Female"
-//        }
-//    }
-//}
-
 protocol ProfileSettingsDelegate {
     func didChooseValue(_: ProfileSetting) -> Void
 }
-
-//let genderRange = Gender.allCases
-//let ethnicityRange = Ethnicity.allCases
 
 class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -36,7 +19,7 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
         "age": Age(),
         "weight": Weight(),
         "height": Height(),
-//        "gender":nil,
+        "gender": Gender(),
         "ethnicity":Ethnicity()
     ]
     
