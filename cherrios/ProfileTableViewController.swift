@@ -16,9 +16,11 @@ struct Stat {
 }
 
 struct Settings: Encodable {
-    let age: Int?
-    let height: Int?
-    let weight: Int?
+    var age: Int?
+    var height: Int?
+    var weight: Int?
+    var ethnicity: String?
+    var gender: String?
 }
 
 class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileSettingsDelegate {
@@ -29,9 +31,6 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         stats = [
             Stat(name: "age", value: "Please select"),
@@ -40,20 +39,15 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             Stat(name: "gender", value: "Please select"),
             Stat(name: "ethnicity", value: "Please select")
         ]
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return stats.count
     }
 
@@ -108,10 +102,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             selectedValues[stat.name] = stat.raw
         }
         
+        let ethnicityType = selectedValues["ethnicity"] as? EthnicityType
+        
         let params = Settings(
             age: selectedValues["age"] as? Int,
             height: selectedValues["height"] as? Int,
-            weight: selectedValues["weight"] as? Int
+            weight: selectedValues["weight"] as? Int,
+            ethnicity: ethnicityType?.rawValue
         )
         
         AF.request("http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5",

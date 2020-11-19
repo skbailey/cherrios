@@ -10,6 +10,7 @@
 		2E02E769256396F40054B94E /* Height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E02E768256396F40054B94E /* Height.swift */; };
 		2E02E76E2563978F0054B94E /* ProfileSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E02E76D2563978F0054B94E /* ProfileSetting.swift */; };
 		2E0CB1402563A8850001DDD6 /* Age.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0CB13F2563A8850001DDD6 /* Age.swift */; };
+		2E0CB1452563AED40001DDD6 /* Ethnicity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0CB1442563AED40001DDD6 /* Ethnicity.swift */; };
 		2E296B89256395AB008B5312 /* Weight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E296B88256395AB008B5312 /* Weight.swift */; };
 		2E3C703525491DB90033354E /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C703425491DB90033354E /* FeedTableViewController.swift */; };
 		2E3C703A254BBCCD0033354E /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */; };
@@ -50,6 +51,7 @@
 		2E02E768256396F40054B94E /* Height.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Height.swift; sourceTree = "<group>"; };
 		2E02E76D2563978F0054B94E /* ProfileSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSetting.swift; sourceTree = "<group>"; };
 		2E0CB13F2563A8850001DDD6 /* Age.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Age.swift; sourceTree = "<group>"; };
+		2E0CB1442563AED40001DDD6 /* Ethnicity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ethnicity.swift; sourceTree = "<group>"; };
 		2E296B88256395AB008B5312 /* Weight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weight.swift; sourceTree = "<group>"; };
 		2E3C703425491DB90033354E /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		2E3C7039254BBCCD0033354E /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				2E02E768256396F40054B94E /* Height.swift */,
 				2E02E76D2563978F0054B94E /* ProfileSetting.swift */,
 				2E0CB13F2563A8850001DDD6 /* Age.swift */,
+				2E0CB1442563AED40001DDD6 /* Ethnicity.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				2E8825EC254137F50070CB83 /* LoginController.swift in Sources */,
 				2E02E76E2563978F0054B94E /* ProfileSetting.swift in Sources */,
 				2E3C703525491DB90033354E /* FeedTableViewController.swift in Sources */,
+				2E0CB1452563AED40001DDD6 /* Ethnicity.swift in Sources */,
 				2E296B89256395AB008B5312 /* Weight.swift in Sources */,
 				2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */,
 				2E3C7045254D25D40033354E /* ProfileTableViewController.swift in Sources */,

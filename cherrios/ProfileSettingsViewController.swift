@@ -7,35 +7,6 @@
 
 import UIKit
 
-//enum Ethnicity: String, CaseIterable {
-//    case asian = "asian"
-//    case black = "black"
-//    case latino = "latino"
-//    case white = "white"
-//    case middleEastern = "middle_eastern"
-//    case multiRacial = "multi_racial"
-//    case nativeAmerican = "native_american"
-//
-//    var formatted: String {
-//        switch self {
-//        case .asian:
-//            return "Asian"
-//        case .black:
-//            return "Black"
-//        case .latino:
-//            return "Hispanic/Latino"
-//        case .white:
-//            return "White"
-//        case .middleEastern:
-//            return "Middle Eastern"
-//        case .multiRacial:
-//            return "Multi-Racial"
-//        case .nativeAmerican:
-//            return "Native American"
-//        }
-//    }
-//}
-//
 //enum Gender: String, CaseIterable {
 //    case male
 //    case female
@@ -62,11 +33,11 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var picker: UIPickerView!
     var settingOptions: [String:ProfileSetting] = [
-        "age":Age(),
-        "weight": Weight(imperial: 0),
-        "height": Height(imperial: 0),
+        "age": Age(),
+        "weight": Weight(),
+        "height": Height(),
 //        "gender":nil,
-//        "ethnicity":nil
+        "ethnicity":Ethnicity()
     ]
     
     var delegate: ProfileSettingsDelegate?
@@ -84,26 +55,7 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
         
         picker.dataSource = self
         picker.delegate = self
-        
-//        setOptions()
     }
-    
-//    func setOptions() {
-//        switch title {
-//        case "age":
-//            profileSettingOptions = ageRange
-//        case "weight":
-//            profileSettingOptions = Weight.formattedRange
-//        case "height":
-//            profileSettingOptions = heightRange
-//        case "ethnicity":
-//            profileSettingOptions = ethnicityRange
-//        case "gender":
-//            profileSettingOptions = genderRange
-//        default:
-//            print("unexpected profile type")
-//        }
-//    }
     
     @objc func cancel() {
         dismiss(animated: false, completion: nil)
@@ -112,8 +64,7 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     @objc func done() {        
         let row = picker.selectedRow(inComponent: 0)
         var setting = settingOptions[title!]
-        let range = setting?.rangeOfRawValues() as! [Int]
-        setting!.current = range[row]
+        setting!.selectedIndex = row
         
         delegate?.didChooseValue(setting!)
         dismiss(animated: false, completion: nil)

@@ -10,7 +10,7 @@ import Foundation
 protocol ProfileSetting {
     var formatted: String { get }
     var raw: Any? { get }
-    var current: Int? { get set }
+    var selectedIndex: Int? { get set }
     
     func rangeOfValues() -> [String]
     func rangeOfRawValues() -> [Any]

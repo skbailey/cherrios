@@ -11,19 +11,24 @@ struct Age: ProfileSetting {
     private static let range: [Int] = Array(18...90)
     private static let formattedRange: [String] = range.map { String($0) }
     
+    var selectedIndex: Int?
+    
     var formatted: String {
-        if let current = current {
-            return String(current)
+        if let selectedIndex = selectedIndex {
+            let selectedAge = Age.range[selectedIndex]
+            return String(selectedAge)
         }
         
         return ""
     }
     
     var raw: Any? {
-        return current
+        if let selectedIndex = selectedIndex {
+            return Age.range[selectedIndex]
+        }
+        
+        return nil
     }
-    
-    var current: Int?
     
     func rangeOfValues() -> [String] {
         return Age.formattedRange
