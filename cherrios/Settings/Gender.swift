@@ -46,10 +46,4 @@ struct Gender: ProfileSetting {
             kind.formatted
         }
     }
-    
-    func rangeOfRawValues() -> [Any] {
-        GenderType.allCases.map { kind in
-            kind.rawValue
-        }
-    }
 }

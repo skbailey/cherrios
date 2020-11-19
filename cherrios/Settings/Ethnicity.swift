@@ -61,10 +61,4 @@ struct Ethnicity: ProfileSetting {
             kind.formatted
         }
     }
-    
-    func rangeOfRawValues() -> [Any] {
-        EthnicityType.allCases.map { kind in
-            kind.rawValue
-        }
-    }
 }

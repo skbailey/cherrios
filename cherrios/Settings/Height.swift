@@ -39,8 +39,4 @@ struct Height: ProfileSetting {
     func rangeOfValues() -> [String] {
         return Height.formattedRange
     }
-    
-    func rangeOfRawValues() -> [Any] {
-        return Height.range
-    }
 }

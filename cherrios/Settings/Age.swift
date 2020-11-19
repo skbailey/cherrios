@@ -33,8 +33,4 @@ struct Age: ProfileSetting {
     func rangeOfValues() -> [String] {
         return Age.formattedRange
     }
-    
-    func rangeOfRawValues() -> [Any] {
-        return Age.range
-    }
 }

@@ -13,5 +13,4 @@ protocol ProfileSetting {
     var selectedIndex: Int? { get set }
     
     func rangeOfValues() -> [String]
-    func rangeOfRawValues() -> [Any]
 }

@@ -33,8 +33,4 @@ struct Weight: ProfileSetting {
     func rangeOfValues() -> [String] {
         return Weight.formattedRange
     }
-    
-    func rangeOfRawValues() -> [Any] {
-        return Weight.range
-    }
 }
