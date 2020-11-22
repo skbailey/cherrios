@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JgO-uM-OVr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JgO-uM-OVr">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -373,7 +373,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hke-ku-rAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2020" y="1543"/>
+            <point key="canvasLocation" x="1536" y="2325"/>
+        </scene>
+        <!--Profile Date Of Birth View Controller-->
+        <scene sceneID="enH-38-nDM">
+            <objects>
+                <viewController modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" id="JZw-tH-G9q" customClass="ProfileDateOfBirthViewController" customModule="cherrios" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="q3H-L3-ViL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hg3-bQ-FNy">
+                                <rect key="frame" x="0.0" y="642" width="414" height="220"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIb-hk-hDn">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <items>
+                                            <navigationItem title="Title" id="iFl-do-AA2"/>
+                                        </items>
+                                    </navigationBar>
+                                    <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="oJZ-Tb-ZP5">
+                                        <rect key="frame" x="0.0" y="44" width="414" height="176"/>
+                                        <locale key="locale" localeIdentifier="en_US"/>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="oJZ-Tb-ZP5" secondAttribute="trailing" id="6sP-3J-Iib"/>
+                                    <constraint firstAttribute="height" constant="220" id="CUF-q9-qk8"/>
+                                    <constraint firstItem="lIb-hk-hDn" firstAttribute="leading" secondItem="hg3-bQ-FNy" secondAttribute="leading" id="QdB-J8-Oeo"/>
+                                    <constraint firstItem="oJZ-Tb-ZP5" firstAttribute="top" secondItem="lIb-hk-hDn" secondAttribute="bottom" id="TLS-iy-wWK"/>
+                                    <constraint firstItem="oJZ-Tb-ZP5" firstAttribute="leading" secondItem="hg3-bQ-FNy" secondAttribute="leading" id="cHu-fS-tN4"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="220" id="p1a-Cn-TFV"/>
+                                    <constraint firstItem="lIb-hk-hDn" firstAttribute="top" secondItem="hg3-bQ-FNy" secondAttribute="top" id="uph-kW-P7F"/>
+                                    <constraint firstAttribute="bottom" secondItem="oJZ-Tb-ZP5" secondAttribute="bottom" id="vg9-Cb-n0M"/>
+                                    <constraint firstAttribute="trailing" secondItem="lIb-hk-hDn" secondAttribute="trailing" id="wlu-j5-dir"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="rXH-hK-Lm8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="hg3-bQ-FNy" firstAttribute="bottom" secondItem="rXH-hK-Lm8" secondAttribute="bottom" id="gdy-IM-BcX"/>
+                            <constraint firstItem="hg3-bQ-FNy" firstAttribute="trailing" secondItem="rXH-hK-Lm8" secondAttribute="trailing" id="gjj-q7-BYq"/>
+                            <constraint firstItem="hg3-bQ-FNy" firstAttribute="leading" secondItem="rXH-hK-Lm8" secondAttribute="leading" id="w05-Dq-WH2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navigationBar" destination="lIb-hk-hDn" id="Wub-fR-4OC"/>
+                        <outlet property="picker" destination="oJZ-Tb-ZP5" id="rYh-c9-HdV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Hjr-tP-3Jd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712" y="2325"/>
         </scene>
         <!--Profile Table View Controller-->
         <scene sceneID="cpW-7l-mrK">
@@ -417,9 +470,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="jc2-lJ-5i2" kind="showDetail" identifier="showSettings" id="ud2-Ln-w3Z"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -443,6 +493,8 @@
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="uVl-OO-QOM"/>
                     <connections>
                         <outlet property="tableView" destination="CZB-We-mEN" id="IOW-BR-WaN"/>
+                        <segue destination="JZw-tH-G9q" kind="showDetail" identifier="showDateOfBirth" id="Afd-nM-7cb"/>
+                        <segue destination="jc2-lJ-5i2" kind="showDetail" identifier="showSettings" id="cDA-Hb-QWW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gPL-45-3b3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

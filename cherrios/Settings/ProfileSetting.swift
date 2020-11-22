@@ -7,10 +7,14 @@
 
 import Foundation
 
-protocol ProfileSetting {
+protocol ProfileValue {
     var formatted: String { get }
     var raw: Any? { get }
+}
+
+protocol ProfileSelection {
     var selectedIndex: Int? { get set }
-    
     func rangeOfValues() -> [String]
 }
+
+typealias ProfileSetting = ProfileValue & ProfileSelection

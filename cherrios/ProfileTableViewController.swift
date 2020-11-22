@@ -16,7 +16,7 @@ struct Stat {
 }
 
 struct Settings: Encodable {
-    var age: Int?
+    var dateOfBirth: String?
     var height: Int?
     var weight: Int?
     var ethnicity: String?
@@ -33,7 +33,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
         
         stats = [
-            Stat(name: "age", value: "Please select"),
+            Stat(name: "dateOfBirth", value: "Please select"),
             Stat(name: "height", value: "Please select"),
             Stat(name: "weight", value: "Please select"),
             Stat(name: "gender", value: "Please select"),
@@ -62,14 +62,24 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "showSettings", sender: nil)
+        let stat = stats[indexPath.row]
+        if stat.name == "dateOfBirth" {
+            performSegue(withIdentifier: "showDateOfBirth", sender: nil)
+        } else {
+            performSegue(withIdentifier: "showSettings", sender: nil)
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let stat = stats[indexPath!.row]
+        
         if segue.identifier == "showSettings" {
-            let indexPath = tableView.indexPathForSelectedRow
-            let stat = stats[indexPath!.row]
             let destination = segue.destination as! ProfileSettingsViewController
+            destination.title = stat.name
+            destination.delegate = self
+        } else if segue.identifier == "showDateOfBirth" {
+            let destination = segue.destination as! ProfileDateOfBirthViewController
             destination.title = stat.name
             destination.delegate = self
         }
@@ -77,7 +87,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     // MARK: ProfileSettingsDelegate method
     
-    func didChooseValue(_ option: ProfileSetting) {
+    func didChooseValue(_ option: ProfileValue) {
         let indexPath = tableView.indexPathForSelectedRow
         
         let row = indexPath!.row
@@ -95,6 +105,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     func updateProfile() -> Void {
         var selectedValues: [String:Any] = [:]
         for stat in stats {
+            if stat.name == "dateOfBirth" {
+                selectedValues[stat.name] = stat.value
+                continue
+            }
+            
             if stat.raw == nil {
                 continue
             }
@@ -104,20 +119,23 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         let ethnicityType = selectedValues["ethnicity"] as? EthnicityType
         let genderType = selectedValues["gender"] as? GenderType
-        
         let params = Settings(
-            age: selectedValues["age"] as? Int,
+            dateOfBirth: selectedValues["dateOfBirth"] as? String,
             height: selectedValues["height"] as? Int,
             weight: selectedValues["weight"] as? Int,
             ethnicity: ethnicityType?.rawValue,
             gender: genderType?.rawValue
         )
+        print("params", params)
         
+        let paramEncoder = URLEncodedFormParameterEncoder(
+            encoder: URLEncodedFormEncoder(keyEncoding: .convertToSnakeCase),
+            destination: .httpBody
+        )
         AF.request("http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5",
-                   
            method: .post,
            parameters: params,
-           encoder: URLEncodedFormParameterEncoder(destination: .httpBody),
+           encoder: paramEncoder,
            headers: ["Authorization": "Bearer \(authToken)"])
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Height: ProfileSetting {
+struct Height: ProfileValue, ProfileSelection {
     private static let range: [Int] = Array(48...84)
     private static let formattedRange: [String] = range.map {
         let feet = $0 / 12

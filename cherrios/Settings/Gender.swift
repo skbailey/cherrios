@@ -21,7 +21,7 @@ enum GenderType: String, CaseIterable {
     }
 }
 
-struct Gender: ProfileSetting {
+struct Gender: ProfileValue, ProfileSelection {
     var selectedIndex: Int?
 
     var formatted: String {

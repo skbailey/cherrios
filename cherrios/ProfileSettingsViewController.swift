@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ProfileSettingsDelegate {
-    func didChooseValue(_: ProfileSetting) -> Void
+    func didChooseValue(_: ProfileValue) -> Void
 }
 
 class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
@@ -16,11 +16,10 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var picker: UIPickerView!
     var settingOptions: [String:ProfileSetting] = [
-        "age": Age(),
         "weight": Weight(),
         "height": Height(),
         "gender": Gender(),
-        "ethnicity":Ethnicity()
+        "ethnicity": Ethnicity()
     ]
     
     var delegate: ProfileSettingsDelegate?

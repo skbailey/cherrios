@@ -36,7 +36,7 @@ enum EthnicityType: String, CaseIterable {
     }
 }
 
-struct Ethnicity: ProfileSetting {
+struct Ethnicity: ProfileValue, ProfileSelection {
     var selectedIndex: Int?
 
     var formatted: String {

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weight: ProfileSetting {
+struct Weight: ProfileValue, ProfileSelection {
     private static let range: [Int] = Array(100...400)
     private static let formattedRange: [String] = range.map { "\(String($0)) lbs" }
     
