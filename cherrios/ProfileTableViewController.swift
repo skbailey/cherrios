@@ -23,22 +23,43 @@ struct Settings: Encodable {
     var gender: String?
 }
 
-class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ProfileSettingsDelegate {
+class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
+                                  ProfileSettingsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    private var imagePicker = UIImagePickerController()
     
-    var stats: [Stat] = []
+    var stats: [Stat] = [
+        Stat(name: "dateOfBirth", value: "Please select"),
+        Stat(name: "height", value: "Please select"),
+        Stat(name: "weight", value: "Please select"),
+        Stat(name: "gender", value: "Please select"),
+        Stat(name: "ethnicity", value: "Please select")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        stats = [
-            Stat(name: "dateOfBirth", value: "Please select"),
-            Stat(name: "height", value: "Please select"),
-            Stat(name: "weight", value: "Please select"),
-            Stat(name: "gender", value: "Please select"),
-            Stat(name: "ethnicity", value: "Please select")
-        ]
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ProfileTableViewController.imageViewTapped(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        tapGesture.numberOfTouchesRequired = 1
+        imageView.addGestureRecognizer(tapGesture)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let stat = stats[indexPath!.row]
+        
+        if segue.identifier == "showSettings" {
+            let destination = segue.destination as! ProfileSettingsViewController
+            destination.title = stat.name
+            destination.delegate = self
+        } else if segue.identifier == "showDateOfBirth" {
+            let destination = segue.destination as! ProfileDateOfBirthViewController
+            destination.title = stat.name
+            destination.delegate = self
+        }
     }
 
     // MARK: - Table view data source
@@ -70,19 +91,20 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = tableView.indexPathForSelectedRow
-        let stat = stats[indexPath!.row]
-        
-        if segue.identifier == "showSettings" {
-            let destination = segue.destination as! ProfileSettingsViewController
-            destination.title = stat.name
-            destination.delegate = self
-        } else if segue.identifier == "showDateOfBirth" {
-            let destination = segue.destination as! ProfileDateOfBirthViewController
-            destination.title = stat.name
-            destination.delegate = self
+    // MARK: UIImagePickerControllerDelegate method
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.originalImage] as? UIImage else {
+            dismiss(animated: true)
+            return
         }
+
+        imageView.image = image
+        dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: ProfileSettingsDelegate method
@@ -126,7 +148,6 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             ethnicity: ethnicityType?.rawValue,
             gender: genderType?.rawValue
         )
-        print("params", params)
         
         let paramEncoder = URLEncodedFormParameterEncoder(
             encoder: URLEncodedFormEncoder(keyEncoding: .convertToSnakeCase),
@@ -147,6 +168,17 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                 case let .failure(error):
                     print(error)
                 }
+        }
+    }
+    
+    // MARK - Tap Gesture
+    @objc func imageViewTapped(_ sender: UITapGestureRecognizer) {
+        if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
+            imagePicker.delegate = self
+            imagePicker.sourceType = .savedPhotosAlbum
+            imagePicker.allowsEditing = false
+
+            present(imagePicker, animated: true, completion: nil)
         }
     }
 }

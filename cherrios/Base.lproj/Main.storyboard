@@ -438,8 +438,17 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elb-mx-Jg8">
                                 <rect key="frame" x="0.0" y="44" width="414" height="414"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h9S-GV-FId">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="414"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
+                                    <constraint firstItem="h9S-GV-FId" firstAttribute="leading" secondItem="elb-mx-Jg8" secondAttribute="leading" id="OML-Bv-KLz"/>
+                                    <constraint firstItem="h9S-GV-FId" firstAttribute="top" secondItem="elb-mx-Jg8" secondAttribute="top" id="Ra3-0x-udA"/>
+                                    <constraint firstAttribute="bottom" secondItem="h9S-GV-FId" secondAttribute="bottom" id="Tuj-MW-lJE"/>
+                                    <constraint firstAttribute="trailing" secondItem="h9S-GV-FId" secondAttribute="trailing" id="wUU-uy-6Ti"/>
                                     <constraint firstAttribute="width" secondItem="elb-mx-Jg8" secondAttribute="height" multiplier="1:1" id="zda-KI-eDU"/>
                                 </constraints>
                             </view>
@@ -492,6 +501,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="person.fill" catalog="system" id="uVl-OO-QOM"/>
                     <connections>
+                        <outlet property="imageView" destination="h9S-GV-FId" id="rcx-f5-9hN"/>
                         <outlet property="tableView" destination="CZB-We-mEN" id="IOW-BR-WaN"/>
                         <segue destination="JZw-tH-G9q" kind="showDetail" identifier="showDateOfBirth" id="Afd-nM-7cb"/>
                         <segue destination="jc2-lJ-5i2" kind="showDetail" identifier="showSettings" id="cDA-Hb-QWW"/>
