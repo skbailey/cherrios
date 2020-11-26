@@ -61,6 +61,29 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             destination.delegate = self
         }
     }
+    
+    func uploadPhoto(_ photo: UIImage) -> Void {
+        guard let imgData = photo.jpegData(compressionQuality: 1) else { return }
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(authToken)"]
+        let imageName = UUID().uuidString
+        AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imgData,
+                                         withName: "photo",
+                                         fileName: "\(imageName).jpeg",
+                                         mimeType: "image/jpeg"
+                )
+        },
+        to: "http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5/photos",
+        method: .post , headers: headers).responseJSON { response in
+            switch response.result {
+                case .success:
+                    print("successfully uploaded photo", response)
+                case let .failure(error):
+                    print("failed", error)
+                    break
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -100,6 +123,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }
 
         imageView.image = image
+        
+        uploadPhoto(image)
         dismiss(animated: true)
     }
     

@@ -27,16 +27,16 @@ class ProfileDateOfBirthViewController: UIViewController {
     }
     
     @objc func cancel() {
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: false)
     }
     
     @objc func done() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMMM yyyy"
-        let selectedDate = dateFormatter.string(from: picker.date)
-        print(selectedDate)
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "dd MMMM yyyy"
+//        let selectedDate = dateFormatter.string(from: picker.date)
+//        print(selectedDate)
         let dateOfBirth = DateOfBirth(current: picker.date)
         delegate?.didChooseValue(dateOfBirth)
-        dismiss(animated: false, completion: nil)
+        dismiss(animated: false)
     }
 }
