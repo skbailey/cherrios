@@ -45,8 +45,11 @@ class ViewController: UIViewController {
     }
     
     func registerUser(email: String, password: String, passwordConfirm: String) {
-        print("Register!")
-        let loginParams = ["username": email, "password": password, "password_confirmation": passwordConfirm]
+        let loginParams = [
+            "username": email,
+            "password": password,
+            "password_confirmation": passwordConfirm
+        ]
         AF.request("http://localhost:3333/api/auth/register",
            method: .post,
            parameters: loginParams,
@@ -57,7 +60,6 @@ class ViewController: UIViewController {
                 debugPrint(response)
                 switch response.result {
                 case .success:
-                    print("Registration Successful")
                     self?.navigationController?.popViewController(animated: true)
                 case let .failure(error):
                     print(error)

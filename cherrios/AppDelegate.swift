@@ -8,7 +8,7 @@
 import UIKit
 
 var authToken = ""
-var userID = ""
+var profileID = ""
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {

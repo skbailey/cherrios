@@ -31,10 +31,6 @@ class ProfileDateOfBirthViewController: UIViewController {
     }
     
     @objc func done() {
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "dd MMMM yyyy"
-//        let selectedDate = dateFormatter.string(from: picker.date)
-//        print(selectedDate)
         let dateOfBirth = DateOfBirth(current: picker.date)
         delegate?.didChooseValue(dateOfBirth)
         dismiss(animated: false)

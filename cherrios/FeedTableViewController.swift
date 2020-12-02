@@ -5,13 +5,15 @@
 //  Created by Sherard Bailey on 10/27/20.
 //
 
+import Alamofire
+import SwiftyJSON
+import UIKit
+
 struct Profile {
     var screenName: String!
     var age: Int!
     var description: String?
 }
-
-import UIKit
 
 class FeedTableViewController: UITableViewController {
     
@@ -39,8 +41,27 @@ class FeedTableViewController: UITableViewController {
         profiles.append(profile3!)
         profiles.append(profile4!)
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        // Load current user profile
+        print("Fetching logged in user profile")
+        AF.request("http://localhost:3333/api/profiles/me",
+                   method: .get,
+                   headers: ["Authorization": "Bearer \(authToken)"])
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                debugPrint(response)
+                switch response.result {
+                case let .success(value):
+                    print("Login Successful")
+                    let json = JSON(value)
+                    if let id = json["id"].string {
+                        profileID = id
+                    }
+                    
+                case let .failure(error):
+                    print(error)
+                }
+            }
     }
 
     // MARK: - Table view data source
