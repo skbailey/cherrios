@@ -73,7 +73,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                                          mimeType: "image/jpeg"
                 )
         },
-        to: "http://localhost:3333/api/profiles/5c32533c-39f6-4b2f-aadd-ec242392b5d5/photos",
+        to: String(format: AppConfig.AppURL.photos, profileID),
         method: .post , headers: headers).responseJSON { response in
             switch response.result {
                 case .success:
@@ -178,7 +178,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             encoder: URLEncodedFormEncoder(keyEncoding: .convertToSnakeCase),
             destination: .httpBody
         )
-        AF.request("http://localhost:3333/api/profiles/\(profileID)",
+        AF.request(String(format: AppConfig.AppURL.profileDetail, profileID),
            method: .post,
            parameters: params,
            encoder: paramEncoder,

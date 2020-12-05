@@ -30,6 +30,7 @@
 		2E6546D7253FCD0E009EF4C4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546D6253FCD0E009EF4C4 /* Alamofire */; };
 		2E6546DD253FCF70009EF4C4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546DC253FCF70009EF4C4 /* SwiftyJSON */; };
 		2E8825EC254137F50070CB83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8825EB254137F50070CB83 /* LoginController.swift */; };
+		2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250EC257B3F180070B39F /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		2E6546C4253FB869009EF4C4 /* cherriosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cherriosUITests.swift; sourceTree = "<group>"; };
 		2E6546C6253FB869009EF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E8825EB254137F50070CB83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		2EA250EC257B3F180070B39F /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 				2E6546AD253FB869009EF4C4 /* LaunchScreen.storyboard */,
 				2E6546B0253FB869009EF4C4 /* Info.plist */,
 				2E8825EB254137F50070CB83 /* LoginController.swift */,
+				2EA250EC257B3F180070B39F /* AppConfig.swift */,
 			);
 			path = cherrios;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */,
 				2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */,
 				2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */,
+				2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */,
 				2E0CB15C256A2C660001DDD6 /* ProfileDateOfBirthViewController.swift in Sources */,
 				2E02E769256396F40054B94E /* Height.swift in Sources */,
 				2E3C703A254BBCCD0033354E /* FeedTableViewCell.swift in Sources */,

@@ -35,7 +35,7 @@ class LoginController: UIViewController {
         }
         
         let loginParams = ["username": userEmail, "password": userPassword]
-        AF.request("http://localhost:3333/api/auth/login",
+        AF.request(AppConfig.AppURL.login,
                    method: .post,
                    parameters: loginParams,
                    encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
@@ -51,7 +51,7 @@ class LoginController: UIViewController {
                         // TODO: Save this token for later requests
                         print("Token", token)
                         authToken = token
-                        AF.request("http://localhost:3333/api/profiles",
+                        AF.request(AppConfig.AppURL.profileIndex,
                                    headers: ["Authorization": "Bearer \(token)"])
                             .validate(statusCode: 200..<300)
                             .validate(contentType: ["text/plain"])

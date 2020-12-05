@@ -43,7 +43,7 @@ class FeedTableViewController: UITableViewController {
 
         // Load current user profile
         print("Fetching logged in user profile")
-        AF.request("http://localhost:3333/api/profiles/me",
+        AF.request(AppConfig.AppURL.me,
                    method: .get,
                    headers: ["Authorization": "Bearer \(authToken)"])
             .validate(statusCode: 200..<300)
