@@ -12,6 +12,21 @@ struct Weight: ProfileValue, ProfileSelection {
     private static let formattedRange: [String] = range.map { "\(String($0)) lbs" }
     
     var selectedIndex: Int?
+    var selectedValue: Int? {
+        set {
+            if let value = newValue {
+                selectedIndex = Weight.range.firstIndex(of: value)
+            }
+        }
+        
+        get {
+            if let index = selectedIndex {
+                return Weight.range[index]
+            }
+            
+            return nil
+        }
+    }
     
     var formatted: String {
         if let selectedIndex = selectedIndex {
@@ -28,6 +43,14 @@ struct Weight: ProfileValue, ProfileSelection {
         }
         
         return nil
+    }
+    
+    init() {
+        
+    }
+    
+    init(value: Int?) {
+        selectedValue = value
     }
     
     func rangeOfValues() -> [String] {

@@ -23,6 +23,29 @@ struct Gender: ProfileValue, ProfileSelection {
     }
     
     var selectedIndex: Int?
+    var selectedValue: GenderType? {
+        set {
+            if let value = newValue {
+                selectedIndex = GenderType.allCases.firstIndex(of: value)
+            }
+        }
+        
+        get {
+            if let index = selectedIndex {
+                return GenderType.allCases[index]
+            }
+            
+            return nil
+        }
+    }
+    
+    init () {
+        
+    }
+    
+    init(value: String) {
+        selectedValue = GenderType(rawValue: value)
+    }
 
     var formatted: String {
         if let selectedIndex = selectedIndex {

@@ -16,6 +16,21 @@ struct Height: ProfileValue, ProfileSelection {
     }
     
     var selectedIndex: Int?
+    var selectedValue: Int? {
+        set {
+            if let value = newValue {
+                selectedIndex = Height.range.firstIndex(of: value)
+            }
+        }
+        
+        get {
+            if let index = selectedIndex {
+                return Height.range[index]
+            }
+            
+            return nil
+        }
+    }
 
     var formatted: String {
         if let selectedIndex = selectedIndex {
@@ -34,6 +49,14 @@ struct Height: ProfileValue, ProfileSelection {
         }
         
         return nil
+    }
+    
+    init() {
+        
+    }
+    
+    init(value: Int?) {
+        selectedValue = value
     }
 
     func rangeOfValues() -> [String] {

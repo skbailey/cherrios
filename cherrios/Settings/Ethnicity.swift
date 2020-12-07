@@ -38,6 +38,29 @@ struct Ethnicity: ProfileValue, ProfileSelection {
     }
     
     var selectedIndex: Int?
+    var selectedValue: EthnicityType? {
+        set {
+            if let value = newValue {
+                selectedIndex = EthnicityType.allCases.firstIndex(of: value)
+            }
+        }
+        
+        get {
+            if let index = selectedIndex {
+                return EthnicityType.allCases[index]
+            }
+            
+            return nil
+        }
+    }
+    
+    init () {
+        
+    }
+    
+    init(value: String) {
+        selectedValue = EthnicityType(rawValue: value)
+    }
 
     var formatted: String {
         if let selectedIndex = selectedIndex {

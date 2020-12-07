@@ -74,7 +74,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                         newStat.value = dateOfBirth.formatted
                     }
                 }
-            case "height", "weight":
+            case "height":
                 let value = UserDefaults.standard.integer(forKey: stat.name)
                 guard value != 0 else {
                     newStat.raw = stat.raw
@@ -82,11 +82,44 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                     return
                 }
                 
-                newStat.raw = value
-                newStat.value = String(value)
-            case "gender", "ethnicity":
-                newStat.raw = stat.raw ?? UserDefaults.standard.string(forKey: stat.name)
-                newStat.value = stat.value ?? newStat.raw as? String
+                let height = Height(value: value)
+                newStat.raw = height.selectedValue
+                newStat.value = height.formatted
+            case "weight":
+                let value = UserDefaults.standard.integer(forKey: stat.name)
+                guard value != 0 else {
+                    newStat.raw = stat.raw
+                    newStat.value = stat.value
+                    return
+                }
+                
+                let weight = Weight(value: value)
+                newStat.raw = weight.selectedValue
+                newStat.value = weight.formatted
+            case "ethnicity":
+                if stat.raw != nil {
+                    newStat.raw = stat.raw
+                    newStat.value = stat.value
+                } else {
+                    let defaultValue = UserDefaults.standard.string(forKey: stat.name)
+                    if let value = defaultValue {
+                        let ethnicity = Ethnicity(value: value)
+                        newStat.raw = ethnicity.raw
+                        newStat.value = ethnicity.formatted
+                    }
+                }
+            case "gender":
+                if stat.raw != nil {
+                    newStat.raw = stat.raw
+                    newStat.value = stat.value
+                } else {
+                    let defaultValue = UserDefaults.standard.string(forKey: stat.name)
+                    if let value = defaultValue {
+                        let gender = Gender(value: value)
+                        newStat.raw = gender.raw
+                        newStat.value = gender.formatted
+                    }
+                }
             default:
                 print("Unexpected profile setting")
             }
