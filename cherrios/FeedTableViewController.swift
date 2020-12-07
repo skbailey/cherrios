@@ -52,12 +52,16 @@ class FeedTableViewController: UITableViewController {
                 debugPrint(response)
                 switch response.result {
                 case let .success(value):
-                    print("Login Successful")
                     let json = JSON(value)
                     if let id = json["id"].string {
                         profileID = id
                     }
                     
+                    UserDefaults.standard.setValue(json["date_of_birth"].string, forKey: "dateOfBirth")
+                    UserDefaults.standard.setValue(json["gender"].string, forKey: "gender")
+                    UserDefaults.standard.setValue(json["ethnicity"].string, forKey: "ethnicity")
+                    UserDefaults.standard.setValue(json["height"].int, forKey: "height")
+                    UserDefaults.standard.setValue(json["weight"].int, forKey: "weight")
                 case let .failure(error):
                     print(error)
                 }

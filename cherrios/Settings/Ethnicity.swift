@@ -7,36 +7,36 @@
 
 import Foundation
 
-enum EthnicityType: String, CaseIterable {
-    case asian = "asian"
-    case black = "black"
-    case latino = "latino"
-    case white = "white"
-    case middleEastern = "middle_eastern"
-    case multiRacial = "multi_racial"
-    case nativeAmerican = "native_american"
+struct Ethnicity: ProfileValue, ProfileSelection {
+    enum EthnicityType: String, CaseIterable {
+        case asian = "asian"
+        case black = "black"
+        case latino = "latino"
+        case white = "white"
+        case middleEastern = "middle_eastern"
+        case multiRacial = "multi_racial"
+        case nativeAmerican = "native_american"
 
-    var formatted: String {
-        switch self {
-        case .asian:
-            return "Asian"
-        case .black:
-            return "Black"
-        case .latino:
-            return "Hispanic/Latino"
-        case .white:
-            return "White"
-        case .middleEastern:
-            return "Middle Eastern"
-        case .multiRacial:
-            return "Multi-Racial"
-        case .nativeAmerican:
-            return "Native American"
+        var formatted: String {
+            switch self {
+            case .asian:
+                return "Asian"
+            case .black:
+                return "Black"
+            case .latino:
+                return "Hispanic/Latino"
+            case .white:
+                return "White"
+            case .middleEastern:
+                return "Middle Eastern"
+            case .multiRacial:
+                return "Multi-Racial"
+            case .nativeAmerican:
+                return "Native American"
+            }
         }
     }
-}
-
-struct Ethnicity: ProfileValue, ProfileSelection {
+    
     var selectedIndex: Int?
 
     var formatted: String {

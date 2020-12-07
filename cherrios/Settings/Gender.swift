@@ -7,21 +7,21 @@
 
 import Foundation
 
-enum GenderType: String, CaseIterable {
-    case male
-    case female
+struct Gender: ProfileValue, ProfileSelection {
+    enum GenderType: String, CaseIterable {
+        case male
+        case female
 
-    var formatted: String {
-        switch self {
-        case .male:
-            return "Male"
-        case .female:
-            return "Female"
+        var formatted: String {
+            switch self {
+            case .male:
+                return "Male"
+            case .female:
+                return "Female"
+            }
         }
     }
-}
-
-struct Gender: ProfileValue, ProfileSelection {
+    
     var selectedIndex: Int?
 
     var formatted: String {

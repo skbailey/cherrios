@@ -11,7 +11,7 @@ import Alamofire
 
 struct Stat {
     var name: String
-    var value: String
+    var value: String?
     var raw: Any?
 }
 
@@ -31,11 +31,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     private var imagePicker = UIImagePickerController()
     
     var stats: [Stat] = [
-        Stat(name: "dateOfBirth", value: "Please select"),
-        Stat(name: "height", value: "Please select"),
-        Stat(name: "weight", value: "Please select"),
-        Stat(name: "gender", value: "Please select"),
-        Stat(name: "ethnicity", value: "Please select")
+        Stat(name: "dateOfBirth"),
+        Stat(name: "height"),
+        Stat(name: "weight"),
+        Stat(name: "gender"),
+        Stat(name: "ethnicity")
     ]
 
     override func viewDidLoad() {
@@ -45,6 +45,56 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         tapGesture.numberOfTapsRequired = 1
         tapGesture.numberOfTouchesRequired = 1
         imageView.addGestureRecognizer(tapGesture)
+        
+        loadStats()
+    }
+    
+    private func loadStats() {
+        var savedStats: [Stat] = []
+        
+        for stat in stats {
+            var newStat = Stat(name: stat.name)
+            
+            switch stat.name {
+            case "dateOfBirth":
+                if stat.raw != nil {
+                    newStat.raw = stat.raw
+                    newStat.value = stat.value
+                } else {
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateStyle = .medium
+                    dateFormatter.timeStyle = .none
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    
+                    if let value = UserDefaults.standard.string(forKey: stat.name) {
+                        let date = dateFormatter.date(from: value)
+                        let dateOfBirth = DateOfBirth(current: date)
+                        
+                        newStat.raw = dateOfBirth.raw
+                        newStat.value = dateOfBirth.formatted
+                    }
+                }
+            case "height", "weight":
+                let value = UserDefaults.standard.integer(forKey: stat.name)
+                guard value != 0 else {
+                    newStat.raw = stat.raw
+                    newStat.value = stat.value
+                    return
+                }
+                
+                newStat.raw = value
+                newStat.value = String(value)
+            case "gender", "ethnicity":
+                newStat.raw = stat.raw ?? UserDefaults.standard.string(forKey: stat.name)
+                newStat.value = stat.value ?? newStat.raw as? String
+            default:
+                print("Unexpected profile setting")
+            }
+            
+            savedStats.append(newStat)
+        }
+        
+        stats = savedStats
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -100,7 +150,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         
         let stat = stats[indexPath.row]
         cell.textLabel?.text = stat.name
-        cell.detailTextLabel?.text = stat.value
+        cell.detailTextLabel?.text = stat.value ?? "Please select"
 
         return cell
     }
@@ -145,6 +195,19 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         stat.value = option.formatted
         stat.raw = option.raw
         
+        // store codable object instead in UserDefaults
+        switch option.raw {
+        case is Gender.GenderType:
+            let genderValue = option.raw as! Gender.GenderType
+            UserDefaults.standard.set(genderValue.rawValue, forKey: stat.name)
+        case is Ethnicity.EthnicityType:
+            let ethnicityValue = option.raw as! Ethnicity.EthnicityType
+            UserDefaults.standard.set(ethnicityValue.rawValue, forKey: stat.name)
+        default:
+            UserDefaults.standard.set(stat.raw, forKey: stat.name)
+        }
+       
+        
         stats[row] = stat
         updateProfile()
     }
@@ -164,8 +227,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             selectedValues[stat.name] = stat.raw
         }
         
-        let ethnicityType = selectedValues["ethnicity"] as? EthnicityType
-        let genderType = selectedValues["gender"] as? GenderType
+        let ethnicityType = selectedValues["ethnicity"] as? Ethnicity.EthnicityType
+        let genderType = selectedValues["gender"] as? Gender.GenderType
         let params = Settings(
             dateOfBirth: selectedValues["dateOfBirth"] as? String,
             height: selectedValues["height"] as? Int,
