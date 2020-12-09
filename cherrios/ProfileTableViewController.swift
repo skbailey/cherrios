@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Alamofire
 
 
@@ -29,6 +30,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     private var imagePicker = UIImagePickerController()
+    private let loader = ImageLoader()
     
     var stats: [Stat] = [
         Stat(name: "dateOfBirth"),
@@ -46,7 +48,41 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         tapGesture.numberOfTouchesRequired = 1
         imageView.addGestureRecognizer(tapGesture)
         
+        loadProfileImage()
         loadStats()
+    }
+    
+    private func loadProfileImage() {
+        AF.request("http://localhost:3333/api/profiles/\(profileID)/photos",
+                   headers: ["Authorization": "Bearer \(authToken)"])
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .responseJSON { [weak self] response in
+                debugPrint(response)
+                switch response.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    if !json.isEmpty {
+                        let path = json[0]["path"]
+                        if let unwrappedImgPath = path.string {
+                            let imgURL = "http://d241eitbp7g6mq.cloudfront.net/\(unwrappedImgPath)"
+                            let url = URL(string: imgURL)
+                            _ = self?.loader.loadImage(url!) { [weak self] result in
+                              do {
+                                let image = try result.get()
+                                DispatchQueue.main.async {
+                                    self?.imageView.image = image
+                                }
+                              } catch {
+                                print(error)
+                              }
+                            }
+                        }
+                    }
+                case let .failure(error):
+                    print(error)
+                }
+        }
     }
     
     private func loadStats() {
