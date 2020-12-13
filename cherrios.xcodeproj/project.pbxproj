@@ -31,6 +31,7 @@
 		2E6546DD253FCF70009EF4C4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546DC253FCF70009EF4C4 /* SwiftyJSON */; };
 		2E8825EC254137F50070CB83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8825EB254137F50070CB83 /* LoginController.swift */; };
 		2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250EC257B3F180070B39F /* AppConfig.swift */; };
+		2EA250FD25860B3B0070B39F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250FC25860B3B0070B39F /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		2E6546C6253FB869009EF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E8825EB254137F50070CB83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2EA250EC257B3F180070B39F /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		2EA250FC25860B3B0070B39F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 				2E6546A8253FB860009EF4C4 /* Main.storyboard */,
 				2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */,
 				2E0CB15B256A2C660001DDD6 /* ProfileDateOfBirthViewController.swift */,
+				2EA250FC25860B3B0070B39F /* SettingsViewController.swift */,
 				2E3C7044254D25D40033354E /* ProfileTableViewController.swift */,
 				2E3C703425491DB90033354E /* FeedTableViewController.swift */,
 				2E3C703E254BC7B30033354E /* ImageLoader.swift */,
@@ -337,6 +340,7 @@
 				2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */,
 				2E3C7045254D25D40033354E /* ProfileTableViewController.swift in Sources */,
 				2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */,
+				2EA250FD25860B3B0070B39F /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

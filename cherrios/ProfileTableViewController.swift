@@ -167,14 +167,15 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let indexPath = tableView.indexPathForSelectedRow
-        let stat = stats[indexPath!.row]
-        
         if segue.identifier == "showSettings" {
+            let indexPath = tableView.indexPathForSelectedRow
+            let stat = stats[indexPath!.row]
             let destination = segue.destination as! ProfileSettingsViewController
             destination.title = stat.name
             destination.delegate = self
         } else if segue.identifier == "showDateOfBirth" {
+            let indexPath = tableView.indexPathForSelectedRow
+            let stat = stats[indexPath!.row]
             let destination = segue.destination as! ProfileDateOfBirthViewController
             destination.title = stat.name
             destination.delegate = self
