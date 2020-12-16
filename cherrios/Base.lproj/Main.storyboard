@@ -564,6 +564,23 @@
             </objects>
             <point key="canvasLocation" x="1080" y="1543"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="RTg-1J-rnT">
+            <objects>
+                <navigationController id="j5A-XM-YSh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="6BN-at-8d1"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Odr-30-yT2">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gpW-5k-tGe" kind="relationship" relationship="rootViewController" id="5Ya-c7-cBi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="579-It-IZu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-486" y="1543"/>
+        </scene>
         <!--Feed Table View Controller-->
         <scene sceneID="4df-2e-aos">
             <objects>
@@ -601,6 +618,10 @@
                         </prototypes>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="" image="text.justify" catalog="system" id="675-Ff-uI3"/>
+                    <navigationItem key="navigationItem" id="FaM-rn-OJs"/>
+                    <connections>
+                        <segue destination="8Gc-tJ-kgg" kind="show" identifier="profileDetail" id="nRB-Oa-e96"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KX1-DJ-B5a" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -617,13 +638,29 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="gpW-5k-tGe" kind="relationship" relationship="viewControllers" id="Laa-SD-PgA"/>
-                        <segue destination="Cx6-eR-MBY" kind="relationship" relationship="viewControllers" id="QYf-aV-4kT"/>
+                        <segue destination="j5A-XM-YSh" kind="relationship" relationship="viewControllers" id="AzF-ZI-ieI"/>
+                        <segue destination="Cx6-eR-MBY" kind="relationship" relationship="viewControllers" id="mZA-Mp-GGh"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z3G-DD-VVr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="712" y="767"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="rQ8-Xz-4xU">
+            <objects>
+                <viewController id="8Gc-tJ-kgg" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0Sf-Vk-wvC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="hso-CE-gWa"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="aId-Xw-b5X"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="htw-ec-xKU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="287" y="2325"/>
         </scene>
     </scenes>
     <resources>
@@ -635,6 +672,9 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
