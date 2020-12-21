@@ -14,7 +14,7 @@ struct Login: Encodable {
     let passwordConfirmation: String
 }
 
-class ViewController: UIViewController {
+class RegistrationViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
