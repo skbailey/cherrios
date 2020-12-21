@@ -15,10 +15,10 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
     var loader = ImageLoader()
     private let itemsPerRow: CGFloat = 3
     private let reuseIdentifier = "FeedCell"
-    private let sectionInsets = UIEdgeInsets(top: 5.0,
-                                             left: 5.0,
-                                             bottom: 5.0,
-                                             right: 5.0)
+    private let sectionInsets = UIEdgeInsets(top: 1.0,
+                                             left: 1.0,
+                                             bottom: 1.0,
+                                             right: 1.0)
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -19,7 +19,7 @@
 		2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */; };
 		2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A2253FB860009EF4C4 /* AppDelegate.swift */; };
 		2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */; };
-		2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A6253FB860009EF4C4 /* ViewController.swift */; };
+		2E6546A7253FB860009EF4C4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A6253FB860009EF4C4 /* RegistrationViewController.swift */; };
 		2E6546AA253FB860009EF4C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6546A8253FB860009EF4C4 /* Main.storyboard */; };
 		2E6546AC253FB868009EF4C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6546AB253FB868009EF4C4 /* Assets.xcassets */; };
 		2E6546AF253FB869009EF4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6546AD253FB869009EF4C4 /* LaunchScreen.storyboard */; };
@@ -65,7 +65,7 @@
 		2E65469F253FB860009EF4C4 /* cherrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cherrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546A2253FB860009EF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2E6546A6253FB860009EF4C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E6546A6253FB860009EF4C4 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		2E6546A9253FB860009EF4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E6546AB253FB868009EF4C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2E6546AE253FB869009EF4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -150,11 +150,11 @@
 				2EA250EC257B3F180070B39F /* AppConfig.swift */,
 				2E6546A2253FB860009EF4C4 /* AppDelegate.swift */,
 				2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */,
-				2E6546A6253FB860009EF4C4 /* ViewController.swift */,
 				2E3C703E254BC7B30033354E /* ImageLoader.swift */,
 				2E770202258EE6DC00177F74 /* FeedCollectionViewController.swift */,
 				2E770207258F16C500177F74 /* FeedCollectionViewCell.swift */,
 				2E8825EB254137F50070CB83 /* LoginController.swift */,
+				2E6546A6253FB860009EF4C4 /* RegistrationViewController.swift */,
 				2E6546A8253FB860009EF4C4 /* Main.storyboard */,
 				2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */,
 				2E0CB15B256A2C660001DDD6 /* ProfileDateOfBirthViewController.swift */,
@@ -326,7 +326,7 @@
 				2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */,
 				2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */,
 				2E770208258F16C500177F74 /* FeedCollectionViewCell.swift in Sources */,
-				2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */,
+				2E6546A7253FB860009EF4C4 /* RegistrationViewController.swift in Sources */,
 				2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */,
 				2E0CB15C256A2C660001DDD6 /* ProfileDateOfBirthViewController.swift in Sources */,
 				2E02E769256396F40054B94E /* Height.swift in Sources */,
