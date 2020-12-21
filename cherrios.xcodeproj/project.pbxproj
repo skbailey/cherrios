@@ -29,6 +29,8 @@
 		2E6546C5253FB869009EF4C4 /* cherriosUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546C4253FB869009EF4C4 /* cherriosUITests.swift */; };
 		2E6546D7253FCD0E009EF4C4 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546D6253FCD0E009EF4C4 /* Alamofire */; };
 		2E6546DD253FCF70009EF4C4 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 2E6546DC253FCF70009EF4C4 /* SwiftyJSON */; };
+		2E770203258EE6DC00177F74 /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E770202258EE6DC00177F74 /* FeedCollectionViewController.swift */; };
+		2E770208258F16C500177F74 /* FeedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E770207258F16C500177F74 /* FeedCollectionViewCell.swift */; };
 		2E8825EC254137F50070CB83 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8825EB254137F50070CB83 /* LoginController.swift */; };
 		2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250EC257B3F180070B39F /* AppConfig.swift */; };
 		2EA250FD25860B3B0070B39F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250FC25860B3B0070B39F /* SettingsViewController.swift */; };
@@ -78,6 +80,8 @@
 		2E6546C0253FB869009EF4C4 /* cherriosUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = cherriosUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546C4253FB869009EF4C4 /* cherriosUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cherriosUITests.swift; sourceTree = "<group>"; };
 		2E6546C6253FB869009EF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2E770202258EE6DC00177F74 /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
+		2E770207258F16C500177F74 /* FeedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewCell.swift; sourceTree = "<group>"; };
 		2E8825EB254137F50070CB83 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		2EA250EC257B3F180070B39F /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		2EA250FC25860B3B0070B39F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				2E6546B0253FB869009EF4C4 /* Info.plist */,
 				2E8825EB254137F50070CB83 /* LoginController.swift */,
 				2EA250EC257B3F180070B39F /* AppConfig.swift */,
+				2E770202258EE6DC00177F74 /* FeedCollectionViewController.swift */,
+				2E770207258F16C500177F74 /* FeedCollectionViewCell.swift */,
 			);
 			path = cherrios;
 			sourceTree = "<group>";
@@ -325,6 +331,7 @@
 			files = (
 				2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */,
 				2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */,
+				2E770208258F16C500177F74 /* FeedCollectionViewCell.swift in Sources */,
 				2E6546A7253FB860009EF4C4 /* ViewController.swift in Sources */,
 				2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */,
 				2E0CB15C256A2C660001DDD6 /* ProfileDateOfBirthViewController.swift in Sources */,
@@ -334,6 +341,7 @@
 				2E8825EC254137F50070CB83 /* LoginController.swift in Sources */,
 				2E0CB14F256635EB0001DDD6 /* DateOfBirth.swift in Sources */,
 				2E02E76E2563978F0054B94E /* ProfileSetting.swift in Sources */,
+				2E770203258EE6DC00177F74 /* FeedCollectionViewController.swift in Sources */,
 				2E3C703525491DB90033354E /* FeedTableViewController.swift in Sources */,
 				2E0CB1452563AED40001DDD6 /* Ethnicity.swift in Sources */,
 				2E296B89256395AB008B5312 /* Weight.swift in Sources */,
