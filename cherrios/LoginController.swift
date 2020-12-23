@@ -54,7 +54,7 @@ class LoginController: UIViewController {
                         AF.request(AppConfig.AppURL.profileIndex,
                                    headers: ["Authorization": "Bearer \(token)"])
                             .validate(statusCode: 200..<300)
-                            .validate(contentType: ["text/plain"])
+                            .validate(contentType: ["application/json"])
                             .responseString { [weak self] response in
                                 debugPrint(response)
                                 
