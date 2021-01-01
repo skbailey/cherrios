@@ -75,6 +75,18 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                 }
             }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "profileDetail" {
+            if let viewController = segue.destination as? ProfileDetailViewController {
+                if let indexPaths = collectionView.indexPathsForSelectedItems,
+                   indexPaths.count == 1 {
+                    let path = indexPaths.first!
+                    viewController.imageURL = profiles[path.item]
+                }
+            }
+        }
+    }
 
     // MARK: UICollectionViewDataSource
 
@@ -87,7 +99,6 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("select the view")
         performSegue(withIdentifier: "profileDetail", sender: nil)
     }
 
