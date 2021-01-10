@@ -19,6 +19,7 @@
 		2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */; };
 		2E3E789525AA26E20035024C /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3E789425AA26E20035024C /* Authentication.swift */; };
 		2E3E789D25AADF6D0035024C /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3E789C25AADF6D0035024C /* Profiles.swift */; };
+		2E3E78AA25AAE7AD0035024C /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3E78A925AAE7AD0035024C /* Registration.swift */; };
 		2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A2253FB860009EF4C4 /* AppDelegate.swift */; };
 		2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */; };
 		2E6546A7253FB860009EF4C4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A6253FB860009EF4C4 /* RegistrationViewController.swift */; };
@@ -67,6 +68,7 @@
 		2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		2E3E789425AA26E20035024C /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		2E3E789C25AADF6D0035024C /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
+		2E3E78A925AAE7AD0035024C /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		2E65469F253FB860009EF4C4 /* cherrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cherrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546A2253FB860009EF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 			children = (
 				2E3E789425AA26E20035024C /* Authentication.swift */,
 				2E3E789C25AADF6D0035024C /* Profiles.swift */,
+				2E3E78A925AAE7AD0035024C /* Registration.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				2EA17A05259EB48500B877C2 /* ProfileDetailViewController.swift in Sources */,
 				2E0CB14F256635EB0001DDD6 /* DateOfBirth.swift in Sources */,
 				2E3E789525AA26E20035024C /* Authentication.swift in Sources */,
+				2E3E78AA25AAE7AD0035024C /* Registration.swift in Sources */,
 				2E02E76E2563978F0054B94E /* ProfileSetting.swift in Sources */,
 				2E770203258EE6DC00177F74 /* FeedCollectionViewController.swift in Sources */,
 				2E0CB1452563AED40001DDD6 /* Ethnicity.swift in Sources */,

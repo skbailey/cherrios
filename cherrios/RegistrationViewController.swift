@@ -8,12 +8,6 @@
 import Alamofire
 import UIKit
 
-struct Login: Encodable {
-    let email: String
-    let password: String
-    let passwordConfirmation: String
-}
-
 class RegistrationViewController: UIViewController {
     
     @IBOutlet weak var email: UITextField!
@@ -41,29 +35,20 @@ class RegistrationViewController: UIViewController {
             return
         }
         
-        registerUser(email: userEmail, password: userPassword, passwordConfirm: userPasswordConfirmed)
+        registerUser(email: userEmail, password: userPassword, passwordConfirmation: userPasswordConfirmed)
     }
     
-    func registerUser(email: String, password: String, passwordConfirm: String) {
-        let loginParams = [
-            "username": email,
-            "password": password,
-            "password_confirmation": passwordConfirm
-        ]
-        AF.request("http://localhost:3333/api/auth/register",
-           method: .post,
-           parameters: loginParams,
-           encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { [weak self] response in
-                debugPrint(response)
+    func registerUser(email: String, password: String, passwordConfirmation: String) {
+        Registration.signup(
+            email: email,
+            password: password,
+            passwordConfirmation: passwordConfirmation) { [weak self] response in
                 switch response.result {
                 case .success:
                     self?.navigationController?.popViewController(animated: true)
                 case let .failure(error):
                     print(error)
                 }
-        }
+            }
     }
 }

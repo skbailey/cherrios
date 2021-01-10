@@ -10,6 +10,7 @@ import Foundation
 struct AppConfig {
     struct AppURL {
         static let login = "http://localhost:3333/api/auth/login"
+        static let signup = "http://localhost:3333/api/auth/register"
         static let me = "http://localhost:3333/api/profiles/me"
         static let photos = "http://localhost:3333/api/profiles/%@/photos"
         static let profileIndex = "http://localhost:3333/api/profiles"
