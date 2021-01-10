@@ -307,25 +307,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             gender: genderType?.rawValue
         )
         
-        let paramEncoder = URLEncodedFormParameterEncoder(
-            encoder: URLEncodedFormEncoder(keyEncoding: .convertToSnakeCase),
-            destination: .httpBody
-        )
-        AF.request(String(format: AppConfig.AppURL.profileDetail, profileID),
-           method: .post,
-           parameters: params,
-           encoder: paramEncoder,
-           headers: ["Authorization": "Bearer \(authToken)"])
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { response in
-                debugPrint(response)
-                switch response.result {
-                case .success:
-                    print("Settings saved")
-                case let .failure(error):
-                    print(error)
-                }
+        Profiles.update(id: profileID, params: params) { response in
+            switch response.result {
+            case .success:
+                print("Settings saved")
+            case let .failure(error):
+                print(error)
+            }
         }
     }
     

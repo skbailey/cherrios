@@ -10,6 +10,25 @@ import Foundation
 import SwiftyJSON
 
 class Profiles {
+    static func update(id: String, params: Settings, completion: @escaping (_ res: AFDataResponse<Data?>) -> Void) {
+        let paramEncoder = URLEncodedFormParameterEncoder(
+            encoder: URLEncodedFormEncoder(keyEncoding: .convertToSnakeCase),
+            destination: .httpBody
+        )
+        
+        AF.request(String(format: AppConfig.AppURL.profileDetail, id),
+           method: .post,
+           parameters: params,
+           encoder: paramEncoder,
+           headers: ["Authorization": "Bearer \(authToken)"])
+            .validate(statusCode: 200..<300)
+            .validate(contentType: ["application/json"])
+            .response { response in
+                debugPrint(response)
+                completion(response)
+            }
+    }
+    
     static func getIndex(completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
         AF.request(AppConfig.AppURL.profileIndex,
                    headers: ["Authorization": "Bearer \(authToken)"])
@@ -30,21 +49,6 @@ class Profiles {
             .responseJSON { response in
                 debugPrint(response)
                 completion(response)
-                switch response.result {
-                case let .success(value):
-                    let json = JSON(value)
-                    if let id = json["id"].string {
-                        profileID = id
-                    }
-                    
-                    UserDefaults.standard.setValue(json["date_of_birth"].string, forKey: "dateOfBirth")
-                    UserDefaults.standard.setValue(json["gender"].string, forKey: "gender")
-                    UserDefaults.standard.setValue(json["ethnicity"].string, forKey: "ethnicity")
-                    UserDefaults.standard.setValue(json["height"].int, forKey: "height")
-                    UserDefaults.standard.setValue(json["weight"].int, forKey: "weight")
-                case let .failure(error):
-                    print(error)
-                }
             }
     }
 }
