@@ -17,6 +17,8 @@
 		2E3C703F254BC7B30033354E /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C703E254BC7B30033354E /* ImageLoader.swift */; };
 		2E3C7045254D25D40033354E /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7044254D25D40033354E /* ProfileTableViewController.swift */; };
 		2E3C704A254E8D9D0033354E /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */; };
+		2E3E789525AA26E20035024C /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3E789425AA26E20035024C /* Authentication.swift */; };
+		2E3E789D25AADF6D0035024C /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E3E789C25AADF6D0035024C /* Profiles.swift */; };
 		2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A2253FB860009EF4C4 /* AppDelegate.swift */; };
 		2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */; };
 		2E6546A7253FB860009EF4C4 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6546A6253FB860009EF4C4 /* RegistrationViewController.swift */; };
@@ -63,6 +65,8 @@
 		2E3C703E254BC7B30033354E /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		2E3C7044254D25D40033354E /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		2E3C7049254E8D9D0033354E /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		2E3E789425AA26E20035024C /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		2E3E789C25AADF6D0035024C /* Profiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profiles.swift; sourceTree = "<group>"; };
 		2E65469F253FB860009EF4C4 /* cherrios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cherrios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6546A2253FB860009EF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2E6546A4253FB860009EF4C4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +129,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		2E3E789325AA26C00035024C /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				2E3E789425AA26E20035024C /* Authentication.swift */,
+				2E3E789C25AADF6D0035024C /* Profiles.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
 		2E654696253FB860009EF4C4 = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +161,7 @@
 		2E6546A1253FB860009EF4C4 /* cherrios */ = {
 			isa = PBXGroup;
 			children = (
+				2E3E789325AA26C00035024C /* Requests */,
 				2E296B8725639590008B5312 /* Settings */,
 				2EA250EC257B3F180070B39F /* AppConfig.swift */,
 				2E6546A2253FB860009EF4C4 /* AppDelegate.swift */,
@@ -337,12 +351,14 @@
 				2E8825EC254137F50070CB83 /* LoginController.swift in Sources */,
 				2EA17A05259EB48500B877C2 /* ProfileDetailViewController.swift in Sources */,
 				2E0CB14F256635EB0001DDD6 /* DateOfBirth.swift in Sources */,
+				2E3E789525AA26E20035024C /* Authentication.swift in Sources */,
 				2E02E76E2563978F0054B94E /* ProfileSetting.swift in Sources */,
 				2E770203258EE6DC00177F74 /* FeedCollectionViewController.swift in Sources */,
 				2E0CB1452563AED40001DDD6 /* Ethnicity.swift in Sources */,
 				2E296B89256395AB008B5312 /* Weight.swift in Sources */,
 				2E6546A3253FB860009EF4C4 /* AppDelegate.swift in Sources */,
 				2E3C7045254D25D40033354E /* ProfileTableViewController.swift in Sources */,
+				2E3E789D25AADF6D0035024C /* Profiles.swift in Sources */,
 				2E6546A5253FB860009EF4C4 /* SceneDelegate.swift in Sources */,
 				2EA250FD25860B3B0070B39F /* SettingsViewController.swift in Sources */,
 			);

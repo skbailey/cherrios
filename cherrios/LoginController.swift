@@ -15,8 +15,6 @@ class LoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func unwindToLogin( _ seg: UIStoryboardSegue) {
@@ -34,42 +32,20 @@ class LoginController: UIViewController {
             return
         }
         
-        let loginParams = ["username": userEmail, "password": userPassword]
-        AF.request(AppConfig.AppURL.login,
-                   method: .post,
-                   parameters: loginParams,
-                   encoder: URLEncodedFormParameterEncoder(destination: .httpBody))
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { response in
-                debugPrint(response)
-                switch response.result {
-                case let .success(value):
-                    print("Login Successful")
-                    let json = JSON(value)
-                    if let token = json["token"].string {
-                        // TODO: Save this token for later requests
-                        print("Token", token)
-                        authToken = token
-                        AF.request(AppConfig.AppURL.profileIndex,
-                                   headers: ["Authorization": "Bearer \(token)"])
-                            .validate(statusCode: 200..<300)
-                            .validate(contentType: ["application/json"])
-                            .responseString { [weak self] response in
-                                debugPrint(response)
-                                
-                                switch response.result {
-                                case .success:
-                                    self?.performSegue(withIdentifier: "LoginUser", sender: nil)
-                                case let .failure(error):
-                                    print(error)
-                                }
-                            }
-                    }
-                    
-                case let .failure(error):
-                    print(error)
+        Authentication.login(email: userEmail, password: userPassword) { [weak self] response in
+            debugPrint(response)
+            
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                if let token = json["token"].string {
+                    authToken = token
+                    self?.performSegue(withIdentifier: "LoginUser", sender: nil)
                 }
+
+            case let .failure(error):
+                print(error)
             }
+        }
     }
 }
