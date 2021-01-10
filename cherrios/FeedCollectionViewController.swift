@@ -49,31 +49,23 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     func loadUserProfile() -> Void {
-        // Load current user profile
-        print("Fetching logged in user profile")
-        AF.request(AppConfig.AppURL.me,
-                   method: .get,
-                   headers: ["Authorization": "Bearer \(authToken)"])
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { response in
-                debugPrint(response)
-                switch response.result {
-                case let .success(value):
-                    let json = JSON(value)
-                    if let id = json["id"].string {
-                        profileID = id
-                    }
-                    
-                    UserDefaults.standard.setValue(json["date_of_birth"].string, forKey: "dateOfBirth")
-                    UserDefaults.standard.setValue(json["gender"].string, forKey: "gender")
-                    UserDefaults.standard.setValue(json["ethnicity"].string, forKey: "ethnicity")
-                    UserDefaults.standard.setValue(json["height"].int, forKey: "height")
-                    UserDefaults.standard.setValue(json["weight"].int, forKey: "weight")
-                case let .failure(error):
-                    print(error)
+        Profiles.me { response in
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                if let id = json["id"].string {
+                    profileID = id
                 }
+                
+                UserDefaults.standard.setValue(json["date_of_birth"].string, forKey: "dateOfBirth")
+                UserDefaults.standard.setValue(json["gender"].string, forKey: "gender")
+                UserDefaults.standard.setValue(json["ethnicity"].string, forKey: "ethnicity")
+                UserDefaults.standard.setValue(json["height"].int, forKey: "height")
+                UserDefaults.standard.setValue(json["weight"].int, forKey: "weight")
+            case let .failure(error):
+                print(error)
             }
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
