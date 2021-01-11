@@ -10,7 +10,8 @@ import Foundation
 
 class Photos {
     static func getAll(forProfile id: String, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
-        AF.request("http://localhost:3333/api/profiles/\(id)/photos",
+        let url = String(format: AppConfig.AppURL.photos, id)
+        AF.request(url,
                    headers: ["Authorization": "Bearer \(authToken)"])
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
