@@ -7,8 +7,30 @@
 
 import Alamofire
 import Foundation
+import UIKit
 
 class Photos {
+    static func upload(photo: UIImage, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
+        guard let imgData = photo.jpegData(compressionQuality: 1) else { return }
+        let headers: HTTPHeaders = ["Authorization": "Bearer \(authToken)"]
+        let imageName = UUID().uuidString
+        AF.upload(multipartFormData: { multipartFormData in
+                multipartFormData.append(imgData,
+                                         withName: "photo",
+                                         fileName: "\(imageName).jpeg",
+                                         mimeType: "image/jpeg"
+                )
+            },
+            to: String(format: AppConfig.AppURL.photos, profileID),
+            method: .post,
+            headers: headers
+        )
+        .validate(statusCode: 200..<300)
+        .responseJSON { response in
+            completion(response)
+        }
+    }
+    
     static func getAll(forProfile id: String, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
         let url = String(format: AppConfig.AppURL.photos, id)
         AF.request(url,

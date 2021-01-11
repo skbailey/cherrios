@@ -19,14 +19,13 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                                              left: 1.0,
                                              bottom: 1.0,
                                              right: 1.0)
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    
+    override func viewWillAppear(_ animated: Bool) {
         let profile1 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-dude.png")
         let profile2 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-guy.jpg")
         let profile3 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-older-man.png")
         let profile4 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-woman.jpg")
+        
         profiles.append(profile1!)
         profiles.append(profile2!)
         profiles.append(profile3!)
@@ -43,6 +42,10 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
         profiles.append(profile2!)
         profiles.append(profile3!)
         profiles.append(profile4!)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         loadUserProfile()

@@ -178,18 +178,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func uploadPhoto(_ photo: UIImage) -> Void {
-        guard let imgData = photo.jpegData(compressionQuality: 1) else { return }
-        let headers: HTTPHeaders = ["Authorization": "Bearer \(authToken)"]
-        let imageName = UUID().uuidString
-        AF.upload(multipartFormData: { multipartFormData in
-                multipartFormData.append(imgData,
-                                         withName: "photo",
-                                         fileName: "\(imageName).jpeg",
-                                         mimeType: "image/jpeg"
-                )
-        },
-        to: String(format: AppConfig.AppURL.photos, profileID),
-        method: .post , headers: headers).responseJSON { response in
+        Photos.upload(photo: photo) { response in
             switch response.result {
                 case .success:
                     print("successfully uploaded photo", response)
@@ -197,8 +186,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                     print("failed", error)
                     break
             }
-        }
-    }
+        }    }
 
     // MARK: - Table view data source
 
