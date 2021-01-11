@@ -53,35 +53,30 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     private func loadProfileImage() {
-        AF.request("http://localhost:3333/api/profiles/\(profileID)/photos",
-                   headers: ["Authorization": "Bearer \(authToken)"])
-            .validate(statusCode: 200..<300)
-            .validate(contentType: ["application/json"])
-            .responseJSON { [weak self] response in
-                debugPrint(response)
-                switch response.result {
-                case let .success(value):
-                    let json = JSON(value)
-                    if !json.isEmpty {
-                        let path = json[0]["path"]
-                        if let unwrappedImgPath = path.string {
-                            let imgURL = "http://d241eitbp7g6mq.cloudfront.net/\(unwrappedImgPath)"
-                            let url = URL(string: imgURL)
-                            _ = self?.loader.loadImage(url!) { [weak self] result in
-                              do {
-                                let image = try result.get()
-                                DispatchQueue.main.async {
-                                    self?.imageView.image = image
-                                }
-                              } catch {
-                                print(error)
-                              }
+        Photos.getAll(forProfile: profileID) { [weak self] response in
+            switch response.result {
+            case let .success(value):
+                let json = JSON(value)
+                if !json.isEmpty {
+                    let path = json[0]["path"]
+                    if let imgPath = path.string {
+                        let imgURL = "http://d241eitbp7g6mq.cloudfront.net/\(imgPath)"
+                        let url = URL(string: imgURL)
+                        _ = self?.loader.loadImage(url!) { [weak self] result in
+                          do {
+                            let image = try result.get()
+                            DispatchQueue.main.async {
+                                self?.imageView.image = image
                             }
+                          } catch {
+                            print(error)
+                          }
                         }
                     }
-                case let .failure(error):
-                    print(error)
                 }
+            case let .failure(error):
+                print(error)
+            }
         }
     }
     
