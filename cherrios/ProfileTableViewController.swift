@@ -107,26 +107,24 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                 }
             case "height":
                 let value = UserDefaults.standard.integer(forKey: stat.name)
-                guard value != 0 else {
+                if value != 0 {
+                    let height = Height(value: value)
+                    newStat.raw = height.selectedValue
+                    newStat.value = height.formatted
+                } else {
                     newStat.raw = stat.raw
-                    newStat.value = stat.value
-                    return
                 }
                 
-                let height = Height(value: value)
-                newStat.raw = height.selectedValue
-                newStat.value = height.formatted
             case "weight":
                 let value = UserDefaults.standard.integer(forKey: stat.name)
-                guard value != 0 else {
+                if value != 0 {
+                    let weight = Weight(value: value)
+                    newStat.raw = weight.selectedValue
+                    newStat.value = weight.formatted
+                } else {
                     newStat.raw = stat.raw
-                    newStat.value = stat.value
-                    return
                 }
                 
-                let weight = Weight(value: value)
-                newStat.raw = weight.selectedValue
-                newStat.value = weight.formatted
             case "ethnicity":
                 if stat.raw != nil {
                     newStat.raw = stat.raw
