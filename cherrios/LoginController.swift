@@ -22,17 +22,24 @@ class LoginController: UIViewController {
     }
     
     @IBAction func loginUser(_ sender: UIButton) {
-        guard let userEmail = emailTextField.text, userEmail != "" else {
+        guard let email = emailTextField?
+                .text?
+                .trimmingCharacters(in: .whitespacesAndNewlines)
+                .lowercased(),
+              email != "" else {
             print("email address missing")
             return
         }
         
-        guard let userPassword = passwordTextField.text, userPassword != "" else {
+        guard let password = passwordTextField?
+                .text?
+                .trimmingCharacters(in: .whitespacesAndNewlines),
+              password != "" else {
             print("password missing")
             return
         }
         
-        Authentication.login(email: userEmail, password: userPassword) { [weak self] response in
+        Authentication.login(email: email, password: password) { [weak self] response in
             debugPrint(response)
             
             switch response.result {
