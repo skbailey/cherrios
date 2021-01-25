@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class Photos {
-    static func upload(photo: UIImage, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
+    static func upload(photo: UIImage, isPrimary: Bool, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
         guard let imgData = photo.jpegData(compressionQuality: 1) else { return }
         let headers: HTTPHeaders = ["Authorization": "Bearer \(authToken)"]
         let imageName = UUID().uuidString
@@ -20,6 +20,8 @@ class Photos {
                                          fileName: "\(imageName).jpeg",
                                          mimeType: "image/jpeg"
                 )
+            
+                multipartFormData.append(Data("true".utf8), withName: "is_primary")
             },
             to: String(format: AppConfig.AppURL.photos, profileID),
             method: .post,

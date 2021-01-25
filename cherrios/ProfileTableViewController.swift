@@ -176,7 +176,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     }
     
     func uploadPhoto(_ photo: UIImage) -> Void {
-        Photos.upload(photo: photo) { response in
+        Photos.upload(photo: photo, isPrimary: true) { response in
             switch response.result {
                 case .success:
                     print("successfully uploaded photo", response)
