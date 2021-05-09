@@ -50,6 +50,12 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
       print("new location data available: ", locations)
+        
+      NotificationCenter.default.post(
+        name: NSNotification.Name(rawValue: "locationUpdate"),
+        object: locations,
+        userInfo: ["locations": locations]
+      )
     }
     
     func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {

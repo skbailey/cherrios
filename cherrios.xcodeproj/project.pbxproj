@@ -37,6 +37,7 @@
 		2EA17A05259EB48500B877C2 /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA17A04259EB48500B877C2 /* ProfileDetailViewController.swift */; };
 		2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250EC257B3F180070B39F /* AppConfig.swift */; };
 		2EA250FD25860B3B0070B39F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA250FC25860B3B0070B39F /* SettingsViewController.swift */; };
+		D45EE5A52648A3FE0082A89C /* Locations.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45EE5A42648A3FE0082A89C /* Locations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		2EA17A04259EB48500B877C2 /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		2EA250EC257B3F180070B39F /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		2EA250FC25860B3B0070B39F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		D45EE5A42648A3FE0082A89C /* Locations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Locations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				2E3E789C25AADF6D0035024C /* Profiles.swift */,
 				2E3E78A925AAE7AD0035024C /* Registration.swift */,
 				2E3E78AE25ABC5D40035024C /* Photos.swift */,
+				D45EE5A42648A3FE0082A89C /* Locations.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				2E6546A7253FB860009EF4C4 /* RegistrationViewController.swift in Sources */,
 				2E3E78AF25ABC5D40035024C /* Photos.swift in Sources */,
 				2EA250ED257B3F180070B39F /* AppConfig.swift in Sources */,
+				D45EE5A52648A3FE0082A89C /* Locations.swift in Sources */,
 				2E0CB15C256A2C660001DDD6 /* ProfileDateOfBirthViewController.swift in Sources */,
 				2E02E769256396F40054B94E /* Height.swift in Sources */,
 				2E0CB14A256617090001DDD6 /* Gender.swift in Sources */,

@@ -6,6 +6,7 @@
 //
 
 import Alamofire
+import CoreLocation
 import SwiftyJSON
 import UIKit
 
@@ -47,13 +48,47 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Setup Notification Center
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.updateLocation),
+            name: NSNotification.Name(rawValue: "locationUpdate"),
+            object: nil
+        )
         
+        // Setup Core Location
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.locationManager.requestAlwaysAuthorization()
         appDelegate.locationManager.startUpdatingLocation()
         
         loadUserProfile()
+    }
+    
+    @objc func updateLocation(notification: NSNotification) {
+        print("Location received")
+        
+        if let data = notification.userInfo as? [String: [CLLocation]],
+           let locations = data["locations"],
+           locations.count > 0 {
+            let currentLocation = locations.last!
+            
+            print("let look at the notification, there are updates", currentLocation)
+            let params = LocationParams(
+                latitude: "\(currentLocation.coordinate.latitude)",
+                longitude: "\(currentLocation.coordinate.longitude)",
+                profileID: profileID
+            )
+            
+            Locations.store(params: params) { response in
+                switch response.result {
+                case let .success(value):
+                    let json = JSON(value)
+                    print("stored location data", json)
+                case let .failure(error):
+                    print(error)
+                }
+            }
+        }
     }
     
     func loadUserProfile() -> Void {

@@ -15,5 +15,6 @@ struct AppConfig {
         static let photos = "http://localhost:3333/api/profiles/%@/photos"
         static let profileIndex = "http://localhost:3333/api/profiles"
         static let profileDetail = "http://localhost:3333/api/profiles/%@"
+        static let locations = "http://localhost:3333/api/locations"
     }
 }
