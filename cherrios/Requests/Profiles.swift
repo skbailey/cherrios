@@ -29,7 +29,7 @@ class Profiles {
             }
     }
     
-    static func getIndex(completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
+    static func getIndex(forProfile currentProfile: String, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
         AF.request(AppConfig.AppURL.profileIndex,
                    headers: ["Authorization": "Bearer \(authToken)"])
             .validate(statusCode: 200..<300)

@@ -11,7 +11,7 @@ import Foundation
 class Registration {
     static func signup(email: String, password: String, passwordConfirmation: String, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
         let loginParams = [
-            "username": email,
+            "email": email,
             "password": password,
             "password_confirmation": passwordConfirmation
         ]

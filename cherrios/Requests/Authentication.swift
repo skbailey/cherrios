@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class Authentication {
     static func login(email: String, password: String, completion: @escaping (_ res: AFDataResponse<Any>) -> Void) {
-        let loginParams = ["username": email, "password": password]
+        let loginParams = ["email": email, "password": password]
         AF.request(AppConfig.AppURL.login,
                    method: .post,
                    parameters: loginParams,

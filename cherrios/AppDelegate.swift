@@ -6,15 +6,23 @@
 //
 
 import UIKit
+import CoreLocation
 
 var authToken = ""
 var profileID = ""
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        locationManager.delegate = self
+        locationManager.distanceFilter = 35
+        //locationManager.allowsBackgroundLocationUpdates = true
+        
         return true
     }
 
@@ -35,3 +43,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+      print("failed to retrieve a location value: `", error)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+      print("new location data available: ", locations)
+    }
+    
+    func locationManagerDidPauseLocationUpdates(_ manager: CLLocationManager) {
+      print("location updates are paused")
+    }
+    
+    func locationManagerDidResumeLocationUpdates(_ manager: CLLocationManager) {
+      print("resumed location updates")
+    }
+}

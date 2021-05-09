@@ -48,6 +48,11 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.locationManager.requestAlwaysAuthorization()
+        appDelegate.locationManager.startUpdatingLocation()
+        
         loadUserProfile()
     }
     
@@ -58,6 +63,15 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                 let json = JSON(value)
                 if let id = json["id"].string {
                     profileID = id
+                    
+                    Profiles.getIndex(forProfile: profileID) { profileResponse in
+                        switch profileResponse.result {
+                        case let .success(value):
+                            print("Got profile index", value)
+                        case let .failure(error):
+                            print("Failed to retrieve profile index", error)
+                        }
+                    }
                 }
                 
                 UserDefaults.standard.setValue(json["date_of_birth"].string, forKey: "dateOfBirth")
