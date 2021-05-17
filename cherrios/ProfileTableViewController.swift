@@ -95,7 +95,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateStyle = .medium
                     dateFormatter.timeStyle = .none
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
                     
                     if let value = UserDefaults.standard.string(forKey: stat.name) {
                         let date = dateFormatter.date(from: value)
