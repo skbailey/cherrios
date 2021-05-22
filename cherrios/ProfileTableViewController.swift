@@ -29,6 +29,7 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     private var imagePicker = UIImagePickerController()
     private let loader = ImageLoader()
     
@@ -184,7 +185,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
                     print("failed", error)
                     break
             }
-        }    }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -212,6 +214,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             performSegue(withIdentifier: "showDateOfBirth", sender: nil)
         } else {
             performSegue(withIdentifier: "showSettings", sender: nil)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+
+        if indexPath.row == stats.count - 1 {
+            tableViewHeight.constant = tableView.contentSize.height
         }
     }
     

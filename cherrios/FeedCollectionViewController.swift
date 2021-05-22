@@ -120,6 +120,10 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
         }
     }
     
+    @IBAction func viewProfile(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "viewProfile", sender: self)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileDetail" {
             if let viewController = segue.destination as? ProfileDetailViewController {
