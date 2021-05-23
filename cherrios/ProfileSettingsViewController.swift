@@ -55,7 +55,7 @@ class ProfileSettingsViewController: UIViewController, UINavigationBarDelegate, 
     // MARK: UIPickerViewDataSource methods
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        1
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {

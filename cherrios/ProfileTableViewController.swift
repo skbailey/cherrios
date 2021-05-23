@@ -276,7 +276,11 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         var selectedValues: [String:Any] = [:]
         for stat in stats {
             if stat.name == "dateOfBirth" {
-                selectedValues[stat.name] = stat.value
+                let dateFormatterPrint = ISO8601DateFormatter()
+                dateFormatterPrint.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                let dateString = dateFormatterPrint.string(from: stat.raw as! Date)
+                
+                selectedValues[stat.name] = dateString
                 continue
             }
             

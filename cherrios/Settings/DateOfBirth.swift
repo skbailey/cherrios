@@ -26,12 +26,6 @@ struct DateOfBirth: ProfileValue {
     }
     
     var raw: Any? {
-        if let current = current {
-            return current
-        }
-        
-        return nil
+        return current
     }
-    
-    
 }
