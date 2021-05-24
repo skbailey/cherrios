@@ -458,6 +458,9 @@
                                                 <color key="textColor" systemColor="labelColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="Tuv-qb-Yt5" id="LVu-6p-ZMZ"/>
+                                                </connections>
                                             </textView>
                                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="CZB-We-mEN">
                                                 <rect key="frame" x="0.0" y="596.5" width="414" height="300"/>
@@ -545,6 +548,7 @@
                         <outlet property="imageView" destination="h9S-GV-FId" id="rcx-f5-9hN"/>
                         <outlet property="tableView" destination="CZB-We-mEN" id="IOW-BR-WaN"/>
                         <outlet property="tableViewHeight" destination="PBp-NE-hbj" id="PuB-ZH-oqf"/>
+                        <outlet property="textView" destination="5bj-OT-EeY" id="Qej-Zm-oSi"/>
                         <segue destination="JZw-tH-G9q" kind="showDetail" identifier="showDateOfBirth" id="Afd-nM-7cb"/>
                         <segue destination="jc2-lJ-5i2" kind="showDetail" identifier="showSettings" id="cDA-Hb-QWW"/>
                     </connections>

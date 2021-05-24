@@ -22,12 +22,14 @@ struct Settings: Encodable {
     var weight: Int?
     var ethnicity: String?
     var gender: String?
+    var description: String?
 }
 
 class ProfileTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                   ProfileSettingsDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     private var imagePicker = UIImagePickerController()
@@ -158,6 +160,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
         }
         
         stats = savedStats
+        
+        textView.text = UserDefaults.standard.string(forKey: "description")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -298,7 +302,8 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
             height: selectedValues["height"] as? Int,
             weight: selectedValues["weight"] as? Int,
             ethnicity: ethnicityType?.rawValue,
-            gender: genderType?.rawValue
+            gender: genderType?.rawValue,
+            description: textView.text
         )
         
         Profiles.update(id: profileID, params: params) { response in
@@ -320,5 +325,13 @@ class ProfileTableViewController: UIViewController, UITableViewDelegate, UITable
 
             present(imagePicker, animated: true, completion: nil)
         }
+    }
+}
+
+extension ProfileTableViewController: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        print(textView.text!)
+        updateProfile()
+        UserDefaults.standard.set(textView.text!, forKey: "description")
     }
 }
