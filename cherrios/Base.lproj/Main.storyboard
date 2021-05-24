@@ -307,6 +307,7 @@
         <scene sceneID="vM8-sh-TGg">
             <objects>
                 <navigationController navigationBarHidden="YES" id="JgO-uM-OVr" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="GwG-tg-eK9"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5SQ-K2-9rr">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -596,7 +597,14 @@
                             <outlet property="delegate" destination="9vs-gq-bdL" id="SKC-TP-oTS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Account Settings" id="HdA-1G-B3Z"/>
+                    <navigationItem key="navigationItem" title="Account Settings" id="HdA-1G-B3Z">
+                        <barButtonItem key="rightBarButtonItem" title="Logout" id="j5i-rj-VqG">
+                            <connections>
+                                <action selector="logout:" destination="9vs-gq-bdL" id="AeQ-rc-bks"/>
+                                <segue destination="JgO-uM-OVr" kind="presentation" identifier="logout" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="wwa-EY-8Vn"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWb-qW-YSn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -39,4 +39,9 @@ class SettingsViewController: UITableViewController {
 
         return cell
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        performSegue(withIdentifier: "logout", sender: self)
+        profileID = ""
+    }
 }
