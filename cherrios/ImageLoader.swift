@@ -22,13 +22,13 @@ class ImageLoader {
         // 2
         let uuid = UUID()
         
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             // 3
-            defer {self.runningRequests.removeValue(forKey: uuid) }
+            defer { self?.runningRequests.removeValue(forKey: uuid) }
             
             // 4
             if let data = data, let image = UIImage(data: data) {
-                self.loadedImages[url] = image
+                self?.loadedImages[url] = image
                 completion(.success(image))
                 return
             }
