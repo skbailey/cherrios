@@ -12,7 +12,8 @@ import UIKit
 
 class FeedCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var profiles: [URL] = []
+//    var profiles: [URL] = []
+    var profileIndex: [JSON] = []
     var loader = ImageLoader()
     private let itemsPerRow: CGFloat = 3
     private let reuseIdentifier = "FeedCell"
@@ -22,27 +23,27 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                                              right: 1.0)
     
     override func viewWillAppear(_ animated: Bool) {
-        let profile1 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-dude.png")
-        let profile2 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-guy.jpg")
-        let profile3 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-older-man.png")
-        let profile4 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-woman.jpg")
+//        let profile1 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-dude.png")
+//        let profile2 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-guy.jpg")
+//        let profile3 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-older-man.png")
+//        let profile4 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-woman.jpg")
         
-        profiles.append(profile1!)
-        profiles.append(profile2!)
-        profiles.append(profile3!)
-        profiles.append(profile4!)
-        profiles.append(profile1!)
-        profiles.append(profile2!)
-        profiles.append(profile3!)
-        profiles.append(profile4!)
-        profiles.append(profile1!)
-        profiles.append(profile2!)
-        profiles.append(profile3!)
-        profiles.append(profile4!)
-        profiles.append(profile1!)
-        profiles.append(profile2!)
-        profiles.append(profile3!)
-        profiles.append(profile4!)
+//        profiles.append(profile1!)
+//        profiles.append(profile2!)
+//        profiles.append(profile3!)
+//        profiles.append(profile4!)
+//        profiles.append(profile1!)
+//        profiles.append(profile2!)
+//        profiles.append(profile3!)
+//        profiles.append(profile4!)
+//        profiles.append(profile1!)
+//        profiles.append(profile2!)
+//        profiles.append(profile3!)
+//        profiles.append(profile4!)
+//        profiles.append(profile1!)
+//        profiles.append(profile2!)
+//        profiles.append(profile3!)
+//        profiles.append(profile4!)
     }
 
     override func viewDidLoad() {
@@ -103,6 +104,19 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                         switch profileResponse.result {
                         case let .success(value):
                             print("Got profile index", value)
+                            let jsonValues = JSON(value)
+                            guard let profileIndex = jsonValues.array else {
+                                return;
+                            }
+                            
+                            for profile in profileIndex {
+                                if let username = profile["username"].string {
+                                    print("Username: \(username)")
+                                }
+                            }
+                            
+                            self.profileIndex = profileIndex
+                            
                         case let .failure(error):
                             print("Failed to retrieve profile index", error)
                         }
@@ -130,7 +144,10 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                 if let indexPaths = collectionView.indexPathsForSelectedItems,
                    indexPaths.count == 1 {
                     let path = indexPaths.first!
-                    viewController.imageURL = profiles[path.item]
+                    let item = profileIndex[path.item]
+                    if let imageURL = item["image"].string {
+                        viewController.imageURL = URL(string: imageURL)
+                    }
                 }
             }
         }
@@ -143,7 +160,7 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return profiles.count
+        return profileIndex.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -155,8 +172,10 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
     
         // Configure the cell
-        let imageUrl = profiles[indexPath.row]
-        let token = loader.loadImage(imageUrl) { result in
+        let item = profileIndex[indexPath.row]
+        let path = item["image"].string
+        let url = URL(string: path!)
+        let token = loader.loadImage(url!) { result in
           do {
             let image = try result.get()
             DispatchQueue.main.async {

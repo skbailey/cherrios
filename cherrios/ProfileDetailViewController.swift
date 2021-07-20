@@ -10,12 +10,12 @@ import UIKit
 class ProfileDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var textView: UITextView!
     var imageURL: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
         DispatchQueue.global().async { [weak self] in
             if let imageURL = self?.imageURL,
                let data = try? Data(contentsOf: imageURL),

@@ -668,6 +668,7 @@
                     <connections>
                         <outlet property="imageView" destination="2rp-ak-5HO" id="DZc-0I-XcL"/>
                         <outlet property="tableView" destination="Dgb-IE-yDE" id="ohI-f2-Sfr"/>
+                        <outlet property="textView" destination="cef-bZ-53e" id="yCa-qx-ofE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VfO-oz-ye1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
