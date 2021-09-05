@@ -40,7 +40,7 @@ class LoginController: UIViewController {
         }
         
         Authentication.login(email: email, password: password) { [weak self] response in
-            debugPrint(response)
+            // debugPrint(response)
             
             switch response.result {
             case let .success(value):

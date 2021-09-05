@@ -13,7 +13,11 @@ import UIKit
 class FeedCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
 //    var profiles: [URL] = []
-    var profileIndex: [JSON] = []
+    var profileIndex: [JSON] = [] {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
     var loader = ImageLoader()
     private let itemsPerRow: CGFloat = 3
     private let reuseIdentifier = "FeedCell"
@@ -21,30 +25,6 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                                              left: 1.0,
                                              bottom: 1.0,
                                              right: 1.0)
-    
-    override func viewWillAppear(_ animated: Bool) {
-//        let profile1 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-dude.png")
-//        let profile2 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-guy.jpg")
-//        let profile3 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-older-man.png")
-//        let profile4 = URL(string: "https://s3.amazonaws.com/com.sherardbailey.tacos/smiling-woman.jpg")
-        
-//        profiles.append(profile1!)
-//        profiles.append(profile2!)
-//        profiles.append(profile3!)
-//        profiles.append(profile4!)
-//        profiles.append(profile1!)
-//        profiles.append(profile2!)
-//        profiles.append(profile3!)
-//        profiles.append(profile4!)
-//        profiles.append(profile1!)
-//        profiles.append(profile2!)
-//        profiles.append(profile3!)
-//        profiles.append(profile4!)
-//        profiles.append(profile1!)
-//        profiles.append(profile2!)
-//        profiles.append(profile3!)
-//        profiles.append(profile4!)
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,17 +83,17 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                     Profiles.getIndex(forProfile: profileID) { profileResponse in
                         switch profileResponse.result {
                         case let .success(value):
-                            print("Got profile index", value)
+                            //print("Got profile index", value)
                             let jsonValues = JSON(value)
                             guard let profileIndex = jsonValues.array else {
                                 return;
                             }
                             
-                            for profile in profileIndex {
-                                if let username = profile["username"].string {
-                                    print("Username: \(username)")
-                                }
-                            }
+//                            for profile in profileIndex {
+//                                if let username = profile["username"].string {
+//                                    print("Username: \(username)")
+//                                }
+//                            }
                             
                             self.profileIndex = profileIndex
                             
@@ -169,12 +149,15 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
 
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("loading collection view cell:", indexPath.row)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
     
         // Configure the cell
         let item = profileIndex[indexPath.row]
-        let path = item["image"].string
+        let path = item["path"].string
+        //let url = URL(string: "https://s3.amazonaws.com/com.sherardbailey.ephemeral/" + path!)
         let url = URL(string: path!)
+        //print("This is the image url", url!)
         let token = loader.loadImage(url!) { result in
           do {
             let image = try result.get()

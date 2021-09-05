@@ -19,7 +19,7 @@ class Authentication {
             .validate(statusCode: 200..<300)
             .validate(contentType: ["application/json"])
             .responseJSON { response in
-                debugPrint(response)
+                // debugPrint(response)
                 completion(response)
             }
     }
