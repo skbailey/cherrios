@@ -45,11 +45,16 @@ class LoginController: UIViewController {
             switch response.result {
             case let .success(value):
                 let json = JSON(value)
-                if let token = json["token"].string {
+                
+                if let token = json["token"].string,
+                   let id = json["id"].string {
                     authToken = token
+                    profileID = id
+                    
                     self?.performSegue(withIdentifier: "LoginUser", sender: nil)
+                } else {
+                    print("warning: invalid token or id")
                 }
-
             case let .failure(error):
                 print(error)
             }

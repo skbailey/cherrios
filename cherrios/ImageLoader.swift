@@ -26,10 +26,7 @@ class ImageLoader {
             // 3
             defer { self?.runningRequests.removeValue(forKey: uuid) }
             
-            if data != nil {
-                debugPrint("Here is the image data")
-                //debugPrint(String(decoding: data, as: UTF8.self))
-            } else {
+            if data == nil {
                 debugPrint("Problem getting data for image url")
             }
             

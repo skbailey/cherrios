@@ -54,6 +54,7 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
             let currentLocation = locations.last!
             
             print("let look at the notification, there are updates", currentLocation)
+            
             let params = LocationParams(
                 latitude: "\(currentLocation.coordinate.latitude)",
                 longitude: "\(currentLocation.coordinate.longitude)",
@@ -89,14 +90,7 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
                                 return;
                             }
                             
-//                            for profile in profileIndex {
-//                                if let username = profile["username"].string {
-//                                    print("Username: \(username)")
-//                                }
-//                            }
-                            
                             self.profileIndex = profileIndex
-                            
                         case let .failure(error):
                             print("Failed to retrieve profile index", error)
                         }
@@ -149,7 +143,6 @@ class FeedCollectionViewController: UICollectionViewController, UICollectionView
 
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("loading collection view cell:", indexPath.row)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FeedCollectionViewCell
     
         // Configure the cell

@@ -10,9 +10,9 @@ import Foundation
 import SwiftyJSON
 
 struct LocationParams: Encodable {
-    var latitude: String?
-    var longitude: String?
-    var profileID: String?
+    var latitude: String
+    var longitude: String
+    var profileID: String
 }
 
 class Locations {
